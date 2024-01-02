@@ -1,6 +1,7 @@
 package org.bouncycastle.asn1.ua;
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.math.ec.ECConstants;
@@ -44,7 +45,7 @@ public abstract class DSTU4145PointEncoder
         ECFieldElement z = null;
         ECFieldElement gamma = null;
 
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         int m = beta.getFieldSize();
         do
         {
