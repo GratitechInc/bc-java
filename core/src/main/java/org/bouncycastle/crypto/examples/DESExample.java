@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.examples;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -390,7 +391,7 @@ public class DESExample extends Object
             byte[] inblock = null;
             byte[] outblock = null;
             String rv = null;
-            while ((rv = br.readLine()) != null)
+            while ((rv = BoundedLineReader.readLine(br, 5_000_000)) != null)
             {
                 inblock = Hex.decode(rv);
                 outblock = new byte[cipher.getOutputSize(inblock.length)];
