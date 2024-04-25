@@ -1,5 +1,7 @@
 package org.bouncycastle.jcajce.provider.drbg;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -279,7 +281,7 @@ public class DRBG
             {
                 String source = Security.getProperty("securerandom.source");
 
-                return new URLSeededEntropySourceProvider(new URL(source));
+                return new URLSeededEntropySourceProvider(Urls.create(source, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
             }
             catch (Exception e)
             {
