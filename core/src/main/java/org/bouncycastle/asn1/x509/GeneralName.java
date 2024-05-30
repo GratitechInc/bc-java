@@ -395,7 +395,7 @@ public class GeneralName
         {
             String e = sTok.nextToken();
 
-            if (e.equals(":"))
+            if (":".equals(e))
             {
                 doubleColon = index;
                 val[index++] = 0;

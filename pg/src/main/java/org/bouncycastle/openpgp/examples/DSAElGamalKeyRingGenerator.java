@@ -174,7 +174,7 @@ public class DSAElGamalKeyRingGenerator
 
         KeyPair elgKp = generateElGamalKeyPair();
 
-        if (args[0].equals("-a"))
+        if ("-a".equals(args[0]))
         {
             if (args.length < 3)
             {

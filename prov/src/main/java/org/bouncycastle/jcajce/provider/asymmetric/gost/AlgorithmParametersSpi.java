@@ -19,7 +19,7 @@ public class AlgorithmParametersSpi
 
     protected boolean isASN1FormatString(String format)
     {
-        return format == null || format.equals("ASN.1");
+        return format == null || "ASN.1".equals(format);
     }
 
     protected AlgorithmParameterSpec engineGetParameterSpec(
@@ -61,7 +61,7 @@ public class AlgorithmParametersSpi
     protected byte[] engineGetEncoded(
         String format)
     {
-        if (isASN1FormatString(format) || format.equalsIgnoreCase("X.509"))
+        if (isASN1FormatString(format) || "X.509".equalsIgnoreCase(format))
         {
             return engineGetEncoded();
         }
@@ -119,7 +119,7 @@ public class AlgorithmParametersSpi
         String format)
         throws IOException
     {
-        if (isASN1FormatString(format) || format.equalsIgnoreCase("X.509"))
+        if (isASN1FormatString(format) || "X.509".equalsIgnoreCase(format))
         {
             engineInit(params);
         }

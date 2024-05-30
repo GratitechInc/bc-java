@@ -35,19 +35,19 @@ class DigestUtil
 
     static ASN1ObjectIdentifier getDigestOID(String digest)
     {
-        if (digest.equals("SHA-256"))
+        if ("SHA-256".equals(digest))
         {
             return NISTObjectIdentifiers.id_sha256;
         }
-        if (digest.equals("SHA-512"))
+        if ("SHA-512".equals(digest))
         {
             return NISTObjectIdentifiers.id_sha512;
         }
-        if (digest.equals("SHAKE128"))
+        if ("SHAKE128".equals(digest))
         {
             return NISTObjectIdentifiers.id_shake128;
         }
-        if (digest.equals("SHAKE256"))
+        if ("SHAKE256".equals(digest))
         {
             return NISTObjectIdentifiers.id_shake256;
         }

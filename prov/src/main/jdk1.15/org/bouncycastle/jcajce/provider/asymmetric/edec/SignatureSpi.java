@@ -268,7 +268,7 @@ public class SignatureSpi
             throw new InvalidKeyException("inappropriate key for " + algorithm);
         }
 
-        if (alg.equals("Ed448"))
+        if ("Ed448".equals(alg))
         {
             return new Ed448Signer(EMPTY_CONTEXT);
         }

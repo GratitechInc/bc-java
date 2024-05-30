@@ -116,7 +116,7 @@ public class JcaPEMKeyConverter
         }
         catch (NoSuchAlgorithmException e)
         {
-            if (algName.equals("ECDSA"))
+            if ("ECDSA".equals(algName))
             {
                 return helper.createKeyFactory("EC"); // try a fall back
             }

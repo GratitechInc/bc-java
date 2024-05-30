@@ -231,7 +231,7 @@ public class PSSSignatureSpi
             }
 
             Digest mgfDigest;
-            if (newParamSpec.getMGFAlgorithm().equalsIgnoreCase("MGF1")
+            if ("MGF1".equalsIgnoreCase(newParamSpec.getMGFAlgorithm())
                 || newParamSpec.getMGFAlgorithm().equals(PKCSObjectIdentifiers.id_mgf1.getId()))
             {
                 if (!(newParamSpec.getMGFParameters() instanceof MGF1ParameterSpec))
@@ -248,8 +248,8 @@ public class PSSSignatureSpi
 
                 mgfDigest = DigestFactory.getDigest(mgfParams.getDigestAlgorithm());
             }
-            else if (newParamSpec.getMGFAlgorithm().equals("SHAKE128")
-                    || newParamSpec.getMGFAlgorithm().equals("SHAKE256"))
+            else if ("SHAKE128".equals(newParamSpec.getMGFAlgorithm())
+                    || "SHAKE256".equals(newParamSpec.getMGFAlgorithm()))
             {
                 mgfDigest = DigestFactory.getDigest(newParamSpec.getMGFAlgorithm());
             }

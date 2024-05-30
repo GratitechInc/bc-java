@@ -141,7 +141,7 @@ public class ECNamedCurveTable
             oid = GMNamedCurves.getOID(name);
         }
 
-        if (oid == null && name.equals("curve25519"))
+        if (oid == null && "curve25519".equals(name))
         {
             oid = CryptlibObjectIdentifiers.curvey25519;
         }

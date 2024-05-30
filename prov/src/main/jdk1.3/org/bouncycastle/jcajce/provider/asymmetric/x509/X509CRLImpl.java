@@ -528,7 +528,7 @@ abstract class X509CRLImpl
      */
     public boolean isRevoked(Certificate cert)
     {
-        if (!cert.getType().equals("X.509"))
+        if (!"X.509".equals(cert.getType()))
         {
             throw new IllegalArgumentException("X.509 CRL used with non X.509 Cert");
         }

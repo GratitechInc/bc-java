@@ -22,11 +22,11 @@ public class XDHParameterSpec
      */
     public XDHParameterSpec(String curveName)
     {
-        if (curveName.equalsIgnoreCase(X25519))
+        if (X25519.equalsIgnoreCase(curveName))
         {
             this.curveName = X25519;
         }
-        else if (curveName.equalsIgnoreCase(X448))
+        else if (X448.equalsIgnoreCase(curveName))
         {
             this.curveName = X448;
         }

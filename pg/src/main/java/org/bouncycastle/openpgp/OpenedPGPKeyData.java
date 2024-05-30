@@ -87,7 +87,7 @@ public class OpenedPGPKeyData
         String type = keyExpression.getString(0);
         ArrayList<PGPExtendedKeyAttribute> attributeList = new ArrayList<PGPExtendedKeyAttribute>();
 
-        if (type.equals("shadowed-private-key") || type.equals("protected-private-key") || type.equals("private-key"))
+        if ("shadowed-private-key".equals(type) || "protected-private-key".equals(type) || "private-key".equals(type))
         {
             SExpression keyExpression = getKeyExpression().getExpression(1);
 
@@ -110,11 +110,11 @@ public class OpenedPGPKeyData
 
                 UnwrapResult unwrapResult;
 
-                if (type.equals("shadowed-private-key"))
+                if ("shadowed-private-key".equals(type))
                 {
                     unwrapResult = null;
                 }
-                else if (type.equals("protected-private-key"))
+                else if ("protected-private-key".equals(type))
                 {
                     SExpression protectedKey = keyExpression.getExpressionWithLabel("protected");
                     if (protectedKey == null)
@@ -199,11 +199,11 @@ public class OpenedPGPKeyData
 
                 UnwrapResult unwrapResult;
 
-                if (type.equals("shadowed-private-key"))
+                if ("shadowed-private-key".equals(type))
                 {
                     unwrapResult = null;
                 }
-                else if (type.equals("protected-private-key"))
+                else if ("protected-private-key".equals(type))
                 {
                     SExpression protectedKey = keyExpression.getExpressionWithLabel("protected");
                     if (protectedKey == null)
@@ -280,11 +280,11 @@ public class OpenedPGPKeyData
 
                 UnwrapResult unwrapResult;
 
-                if (type.equals("shadowed-private-key"))
+                if ("shadowed-private-key".equals(type))
                 {
                     unwrapResult = null;
                 }
-                else if (type.equals("protected-private-key"))
+                else if ("protected-private-key".equals(type))
                 {
                     SExpression protectedKey = keyExpression.getExpressionWithLabel("protected");
                     if (protectedKey == null)
@@ -343,11 +343,11 @@ public class OpenedPGPKeyData
 
                 UnwrapResult unwrapResult;
 
-                if (type.equals("shadowed-private-key"))
+                if ("shadowed-private-key".equals(type))
                 {
                     unwrapResult = null;
                 }
-                else if (type.equals("protected-private-key"))
+                else if ("protected-private-key".equals(type))
                 {
                     SExpression protectedKey = keyExpression.getExpressionWithLabel("protected");
                     if (protectedKey == null)
@@ -758,12 +758,12 @@ public class OpenedPGPKeyData
         throws PGPException, IOException
     {
 
-        if (protectionType.equals("openpgp-s2k3-sha1-aes-cbc"))
+        if ("openpgp-s2k3-sha1-aes-cbc".equals(protectionType))
         {
             // TODO could not get client to generate this.
             throw new IllegalArgumentException("openpgp-s2k3-sha1-aes-cbc not supported on newer key type");
         }
-        else if (protectionType.equals("openpgp-s2k3-ocb-aes"))
+        else if ("openpgp-s2k3-ocb-aes".equals(protectionType))
         {
             //
             // Create AAD.
@@ -809,12 +809,12 @@ public class OpenedPGPKeyData
         throws PGPException, IOException
     {
 
-        if (protectionType.equals("openpgp-s2k3-sha1-aes-cbc"))
+        if ("openpgp-s2k3-sha1-aes-cbc".equals(protectionType))
         {
             // TODO could not get client to generate this.
             throw new IllegalArgumentException("openpgp-s2k3-sha1-aes-cbc not supported on newer key type");
         }
-        else if (protectionType.equals("openpgp-s2k3-ocb-aes"))
+        else if ("openpgp-s2k3-ocb-aes".equals(protectionType))
         {
 
             SExpression.Builder builder = SExpression.builder().addValue("ecc");
@@ -897,12 +897,12 @@ public class OpenedPGPKeyData
         }
 
         PublicKeyPacket publicKeyPacket;
-        if (Strings.toLowerCase(curve).equals("ed25519"))
+        if ("ed25519".equals(Strings.toLowerCase(curve)))
         {
             EdDSAPublicBCPGKey basePubKey = new EdDSAPublicBCPGKey(EdECObjectIdentifiers.id_Ed25519, new BigInteger(1, qoint));
             publicKeyPacket = new PublicKeyPacket(PublicKeyAlgorithmTags.EDDSA_LEGACY, new Date(), basePubKey);
         }
-        else if (Strings.toLowerCase(curve).equals("ed448"))
+        else if ("ed448".equals(Strings.toLowerCase(curve)))
         {
             EdDSAPublicBCPGKey basePubKey = new EdDSAPublicBCPGKey(EdECObjectIdentifiers.id_Ed448, new BigInteger(1, qoint));
             publicKeyPacket = new PublicKeyPacket(PublicKeyAlgorithmTags.EDDSA_LEGACY, new Date(), basePubKey);
@@ -991,12 +991,12 @@ public class OpenedPGPKeyData
         throws PGPException, IOException
     {
 
-        if (protectionType.equals("openpgp-s2k3-sha1-aes-cbc"))
+        if ("openpgp-s2k3-sha1-aes-cbc".equals(protectionType))
         {
             // TODO could not get client to generate this.
             throw new IllegalArgumentException("openpgp-s2k3-sha1-aes-cbc not supported on newer key type");
         }
-        else if (protectionType.equals("openpgp-s2k3-ocb-aes"))
+        else if ("openpgp-s2k3-ocb-aes".equals(protectionType))
         {
 
 

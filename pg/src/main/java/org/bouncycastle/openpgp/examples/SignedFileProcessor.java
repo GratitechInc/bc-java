@@ -184,9 +184,9 @@ public class SignedFileProcessor
     {
         Security.addProvider(new BouncyCastleProvider());
 
-        if (args[0].equals("-s"))
+        if ("-s".equals(args[0]))
         {
-            if (args[1].equals("-a"))
+            if ("-a".equals(args[1]))
             {
                 FileInputStream     keyIn = new FileInputStream(args[3]);
                 FileOutputStream    out = new FileOutputStream(args[2] + ".asc");
@@ -201,7 +201,7 @@ public class SignedFileProcessor
                 signFile(args[1], keyIn, out, args[3].toCharArray(), false);
             }
         }
-        else if (args[0].equals("-v"))
+        else if ("-v".equals(args[0]))
         {
             FileInputStream    in = new FileInputStream(args[1]);
             FileInputStream    keyIn = new FileInputStream(args[2]);

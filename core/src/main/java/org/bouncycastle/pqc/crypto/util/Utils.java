@@ -442,23 +442,23 @@ class Utils
 
     public static AlgorithmIdentifier getAlgorithmIdentifier(String digestName)
     {
-        if (digestName.equals("SHA-1"))
+        if ("SHA-1".equals(digestName))
         {
             return new AlgorithmIdentifier(OIWObjectIdentifiers.idSHA1, DERNull.INSTANCE);
         }
-        if (digestName.equals("SHA-224"))
+        if ("SHA-224".equals(digestName))
         {
             return new AlgorithmIdentifier(NISTObjectIdentifiers.id_sha224);
         }
-        if (digestName.equals("SHA-256"))
+        if ("SHA-256".equals(digestName))
         {
             return new AlgorithmIdentifier(NISTObjectIdentifiers.id_sha256);
         }
-        if (digestName.equals("SHA-384"))
+        if ("SHA-384".equals(digestName))
         {
             return new AlgorithmIdentifier(NISTObjectIdentifiers.id_sha384);
         }
-        if (digestName.equals("SHA-512"))
+        if ("SHA-512".equals(digestName))
         {
             return new AlgorithmIdentifier(NISTObjectIdentifiers.id_sha512);
         }

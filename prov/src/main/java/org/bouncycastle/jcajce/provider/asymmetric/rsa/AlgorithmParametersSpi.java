@@ -28,7 +28,7 @@ public abstract class AlgorithmParametersSpi
 {
     protected boolean isASN1FormatString(String format)
     {
-        return format == null || format.equals("ASN.1");
+        return format == null || "ASN.1".equals(format);
     }
 
     protected AlgorithmParameterSpec engineGetParameterSpec(
@@ -81,7 +81,7 @@ public abstract class AlgorithmParametersSpi
         protected byte[] engineGetEncoded(
             String format)
         {
-            if (isASN1FormatString(format) || format.equalsIgnoreCase("X.509"))
+            if (isASN1FormatString(format) || "X.509".equalsIgnoreCase(format))
             {
                 return engineGetEncoded();
             }
@@ -147,8 +147,8 @@ public abstract class AlgorithmParametersSpi
             String format)
             throws IOException
         {
-            if (format.equalsIgnoreCase("X.509")
-                    || format.equalsIgnoreCase("ASN.1"))
+            if ("X.509".equalsIgnoreCase(format)
+                    || "ASN.1".equalsIgnoreCase(format))
             {
                 engineInit(params);
             }
@@ -201,7 +201,7 @@ public abstract class AlgorithmParametersSpi
             else
             {
                 AlgorithmIdentifier maskGenAlgorithm = new AlgorithmIdentifier(
-                    pssSpec.getMGFAlgorithm().equals("SHAKE128") ? NISTObjectIdentifiers.id_shake128 : NISTObjectIdentifiers.id_shake256);
+                    "SHAKE128".equals(pssSpec.getMGFAlgorithm()) ? NISTObjectIdentifiers.id_shake128 : NISTObjectIdentifiers.id_shake256);
                 RSASSAPSSparams pssP = new RSASSAPSSparams(hashAlgorithm, maskGenAlgorithm, new ASN1Integer(pssSpec.getSaltLength()), new ASN1Integer(pssSpec.getTrailerField()));
 
                 return pssP.getEncoded("DER");
@@ -212,8 +212,8 @@ public abstract class AlgorithmParametersSpi
             String format)
             throws IOException
         {
-            if (format.equalsIgnoreCase("X.509")
-                    || format.equalsIgnoreCase("ASN.1"))
+            if ("X.509".equalsIgnoreCase(format)
+                    || "ASN.1".equalsIgnoreCase(format))
             {
                 return engineGetEncoded();
             }
@@ -292,7 +292,7 @@ public abstract class AlgorithmParametersSpi
             String format)
             throws IOException
         {
-            if (isASN1FormatString(format) || format.equalsIgnoreCase("X.509"))
+            if (isASN1FormatString(format) || "X.509".equalsIgnoreCase(format))
             {
                 engineInit(params);
             }

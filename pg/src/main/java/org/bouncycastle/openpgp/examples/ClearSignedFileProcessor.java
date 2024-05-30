@@ -227,23 +227,23 @@ public class ClearSignedFileProcessor
     {    
         int digest;
         
-        if (digestName.equals("SHA256"))
+        if ("SHA256".equals(digestName))
         {
             digest = PGPUtil.SHA256;
         }
-        else if (digestName.equals("SHA384"))
+        else if ("SHA384".equals(digestName))
         {
             digest = PGPUtil.SHA384;
         }
-        else if (digestName.equals("SHA512"))
+        else if ("SHA512".equals(digestName))
         {
             digest = PGPUtil.SHA512;
         }
-        else if (digestName.equals("MD5"))
+        else if ("MD5".equals(digestName))
         {
             digest = PGPUtil.MD5;
         }
-        else if (digestName.equals("RIPEMD160"))
+        else if ("RIPEMD160".equals(digestName))
         {
             digest = PGPUtil.RIPEMD160;
         }
@@ -368,7 +368,7 @@ public class ClearSignedFileProcessor
     {
         Security.addProvider(new BouncyCastleProvider());
 
-        if (args[0].equals("-s"))
+        if ("-s".equals(args[0]))
         {
             InputStream        keyIn = PGPUtil.getDecoderStream(new FileInputStream(args[2]));
             FileOutputStream   out = new FileOutputStream(args[1] + ".asc");
@@ -382,7 +382,7 @@ public class ClearSignedFileProcessor
                 signFile(args[1], keyIn, out, args[3].toCharArray(), args[4]);
             }
         }
-        else if (args[0].equals("-v"))
+        else if ("-v".equals(args[0]))
         {
             if (args[1].indexOf(".asc") < 0)
             {

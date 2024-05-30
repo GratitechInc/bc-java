@@ -425,15 +425,15 @@ public class BcKeyStoreSpi
 
         dIn.readFully(enc);
 
-        if (format.equals("PKCS#8") || format.equals("PKCS8"))
+        if ("PKCS#8".equals(format) || "PKCS8".equals(format))
         {
             spec = new PKCS8EncodedKeySpec(enc);
         }
-        else if (format.equals("X.509") || format.equals("X509"))
+        else if ("X.509".equals(format) || "X509".equals(format))
         {
             spec = new X509EncodedKeySpec(enc);
         }
-        else if (format.equals("RAW"))
+        else if ("RAW".equals(format))
         {
             return new SecretKeySpec(enc, algorithm);
         }

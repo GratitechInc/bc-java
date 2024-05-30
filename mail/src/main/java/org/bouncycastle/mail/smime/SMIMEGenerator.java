@@ -53,7 +53,7 @@ public class SMIMEGenerator
         String encoding)
     {
         this.encoding = encoding;
-        this.useBase64 = Strings.toLowerCase(encoding).equals("base64");
+        this.useBase64 = "base64".equals(Strings.toLowerCase(encoding));
     }
 
     /**

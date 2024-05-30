@@ -73,7 +73,7 @@ public class BouncyCastleJsseProvider
             String first = config.substring(0, colonPos).trim();
             String second = config.substring(colonPos + 1).trim();
 
-            fipsMode = first.equalsIgnoreCase("fips");
+            fipsMode = "fips".equalsIgnoreCase(first);
             cryptoName = second;
         }
 
@@ -106,7 +106,7 @@ public class BouncyCastleJsseProvider
     private JcaTlsCryptoProvider createCryptoProvider(String cryptoName)
         throws GeneralSecurityException
     {
-        if (cryptoName.equalsIgnoreCase("default"))
+        if ("default".equalsIgnoreCase(cryptoName))
         {
             return new JcaTlsCryptoProvider();
         }

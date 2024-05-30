@@ -650,7 +650,7 @@ public class OEROutputStream
             for (int i = 0; i != callStack.length; i++)
             {
                 StackTraceElement ste = callStack[i];
-                if (ste.getMethodName().equals("debugPrint"))
+                if ("debugPrint".equals(ste.getMethodName()))
                 {
                     level = 0;
                     continue;

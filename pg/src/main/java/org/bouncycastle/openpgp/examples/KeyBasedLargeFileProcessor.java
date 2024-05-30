@@ -263,13 +263,13 @@ public class KeyBasedLargeFileProcessor
             return;
         }
         
-        if (args[0].equals("-e"))
+        if ("-e".equals(args[0]))
         {
-            if (args[1].equals("-a") || args[1].equals("-ai") || args[1].equals("-ia"))
+            if ("-a".equals(args[1]) || "-ai".equals(args[1]) || "-ia".equals(args[1]))
             {
                 encryptFile(args[2] + ".asc", args[2], args[3], true, (args[1].indexOf('i') > 0));
             }
-            else if (args[1].equals("-i"))
+            else if ("-i".equals(args[1]))
             {
                 encryptFile(args[2] + ".bpg", args[2], args[3], false, true);
             }
@@ -278,7 +278,7 @@ public class KeyBasedLargeFileProcessor
                 encryptFile(args[1] + ".bpg", args[1], args[2], false, false);
             }
         }
-        else if (args[0].equals("-d"))
+        else if ("-d".equals(args[0]))
         {
             decryptFile(args[1], args[2], args[3].toCharArray(), new File(args[1]).getName() + ".out");
         }

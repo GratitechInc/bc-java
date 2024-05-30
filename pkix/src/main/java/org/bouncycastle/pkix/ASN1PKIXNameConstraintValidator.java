@@ -1063,7 +1063,7 @@ class ASN1PKIXNameConstraintValidator
         {
             if (i == -1)
             {
-                if (testDomainParts[i + d].equals(""))
+                if ("".equals(testDomainParts[i + d]))
                 {
                     return false;
                 }

@@ -31,7 +31,7 @@ public class IvAlgorithmParameters
             return new DEROctetString(engineGetEncoded("RAW")).getEncoded();
         }
 
-        if (format.equals("RAW"))
+        if ("RAW".equals(format))
         {
             return Arrays.clone(iv);
         }
@@ -102,7 +102,7 @@ public class IvAlgorithmParameters
             return;
         }
 
-        if (format.equals("RAW"))
+        if ("RAW".equals(format))
         {
             engineInit(params);
             return;

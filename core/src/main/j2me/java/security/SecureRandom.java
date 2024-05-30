@@ -50,11 +50,11 @@ public class SecureRandom extends java.util.Random
     // public class methods
     public static SecureRandom getInstance(String algorithm)
     {
-        if (algorithm.equals("SHA1PRNG"))
+        if ("SHA1PRNG".equals(algorithm))
         {
             return new SecureRandom(sha1Generator);
         }
-        if (algorithm.equals("SHA256PRNG"))
+        if ("SHA256PRNG".equals(algorithm))
         {
             return new SecureRandom(sha256Generator);
         }

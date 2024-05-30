@@ -221,7 +221,7 @@ public class KeyAgreementSpi
         }
 
         // for JSSE compatibility
-        if (algorithm.equals("TlsPremasterSecret"))
+        if ("TlsPremasterSecret".equals(algorithm))
         {
             return new SecretKeySpec(trimZeroes(result), algorithm);
         }

@@ -177,9 +177,9 @@ public class DetachedSignatureProcessor
     {
         Security.addProvider(new BouncyCastleProvider());
 
-        if (args[0].equals("-s"))
+        if ("-s".equals(args[0]))
         {
-            if (args[1].equals("-a"))
+            if ("-a".equals(args[1]))
             {
                 createSignature(args[2], args[3], args[2] + ".asc", args[4].toCharArray(), true);
             }
@@ -188,7 +188,7 @@ public class DetachedSignatureProcessor
                 createSignature(args[1], args[2], args[1] + ".bpg", args[3].toCharArray(), false);
             }
         }
-        else if (args[0].equals("-v"))
+        else if ("-v".equals(args[0]))
         {
             verifySignature(args[1], args[2], args[3]);
         }

@@ -106,7 +106,7 @@ public class CipherSpi
     {
         String md = Strings.toUpperCase(mode);
         
-        if (md.equals("NONE") || md.equals("ECB"))
+        if ("NONE".equals(md) || "ECB".equals(md))
         {
             return;
         }
@@ -120,23 +120,23 @@ public class CipherSpi
     {
         String pad = Strings.toUpperCase(padding);
 
-        if (pad.equals("NOPADDING"))
+        if ("NOPADDING".equals(pad))
         {
             cipher = new BufferedAsymmetricBlockCipher(new ElGamalEngine());
         }
-        else if (pad.equals("PKCS1PADDING"))
+        else if ("PKCS1PADDING".equals(pad))
         {
             cipher = new BufferedAsymmetricBlockCipher(new PKCS1Encoding(new ElGamalEngine()));
         }
-        else if (pad.equals("ISO9796-1PADDING"))
+        else if ("ISO9796-1PADDING".equals(pad))
         {
             cipher = new BufferedAsymmetricBlockCipher(new ISO9796d1Encoding(new ElGamalEngine()));
         }
-        else if (pad.equals("OAEPPADDING"))
+        else if ("OAEPPADDING".equals(pad))
         {
             cipher = new BufferedAsymmetricBlockCipher(new OAEPEncoding(new ElGamalEngine()));
         }
-        else if (pad.equals("OAEPWITHSHA1ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA1ANDMGF1PADDING".equals(pad))
         {
             cipher = new BufferedAsymmetricBlockCipher(new OAEPEncoding(new ElGamalEngine()));
         }

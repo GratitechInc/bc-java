@@ -121,11 +121,11 @@ public class BasicMimeParser
 
     private InputStream processStream(Headers headers, InputStream inputStream)
     {
-        if (headers.getContentTransferEncoding().equals("base64"))
+        if ("base64".equals(headers.getContentTransferEncoding()))
         {
             return new Base64InputStream(inputStream);
         }
-        else if (headers.getContentTransferEncoding().equals("quoted-printable"))
+        else if ("quoted-printable".equals(headers.getContentTransferEncoding()))
         {
             return new QuotedPrintableInputStream(inputStream);
         }

@@ -195,9 +195,9 @@ public class PBEFileProcessor
     {
         Security.addProvider(new BouncyCastleProvider());
 
-        if (args[0].equals("-e"))
+        if ("-e".equals(args[0]))
         {
-            if (args[1].equals("-a"))
+            if ("-a".equals(args[1]))
             {
                 encryptFile(args[2] + ".asc", args[2], args[3].toCharArray(), true);
             }
@@ -206,7 +206,7 @@ public class PBEFileProcessor
                 encryptFile(args[1] + ".bpg", args[1], args[2].toCharArray(), false);
             }
         }
-        else if (args[0].equals("-d"))
+        else if ("-d".equals(args[0]))
         {
             decryptFile(args[1], args[2].toCharArray());
         }

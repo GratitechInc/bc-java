@@ -74,7 +74,7 @@ class CrlCache
 
         Collection crls;
 
-        if (distributionPoint.getScheme().equals("ldap"))
+        if ("ldap".equals(distributionPoint.getScheme()))
         {
             crls = getCrlsFromLDAP(certFact, distributionPoint);
         }

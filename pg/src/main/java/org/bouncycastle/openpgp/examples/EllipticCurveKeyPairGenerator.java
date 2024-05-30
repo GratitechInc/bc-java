@@ -151,7 +151,7 @@ public class EllipticCurveKeyPairGenerator
             System.exit(0);
         }
 
-        if (args[0].equals("-a"))
+        if ("-a".equals(args[0]))
         {
             if (args.length < 3)
             {

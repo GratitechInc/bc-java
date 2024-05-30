@@ -148,7 +148,7 @@ public class KeyAgreementSpi
     private RawAgreement getAgreement(String alg)
         throws InvalidKeyException
     {
-        if (!(kaAlgorithm.equals("XDH") || kaAlgorithm.startsWith(alg)))
+        if (!("XDH".equals(kaAlgorithm) || kaAlgorithm.startsWith(alg)))
         {
             throw new InvalidKeyException("inappropriate key for " + kaAlgorithm);
         }

@@ -125,7 +125,7 @@ public class CipherSpi
     {
         String md = Strings.toUpperCase(mode);
         
-        if (md.equals("NONE") || md.equals("ECB"))
+        if ("NONE".equals(md) || "ECB".equals(md))
         {
             return;
         }
@@ -139,59 +139,59 @@ public class CipherSpi
     {
         String pad = Strings.toUpperCase(padding);
 
-        if (pad.equals("NOPADDING"))
+        if ("NOPADDING".equals(pad))
         {
             cipher = new ElGamalEngine();
         }
-        else if (pad.equals("PKCS1PADDING"))
+        else if ("PKCS1PADDING".equals(pad))
         {
             cipher = new PKCS1Encoding(new ElGamalEngine());
         }
-        else if (pad.equals("ISO9796-1PADDING"))
+        else if ("ISO9796-1PADDING".equals(pad))
         {
             cipher = new ISO9796d1Encoding(new ElGamalEngine());
         }
-        else if (pad.equals("OAEPPADDING"))
+        else if ("OAEPPADDING".equals(pad))
         {
             initFromSpec(OAEPParameterSpec.DEFAULT);
         }
-        else if (pad.equals("OAEPWITHMD5ANDMGF1PADDING"))
+        else if ("OAEPWITHMD5ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("MD5", "MGF1", new MGF1ParameterSpec("MD5"), PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA1ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA1ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(OAEPParameterSpec.DEFAULT);
         }
-        else if (pad.equals("OAEPWITHSHA224ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA224ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA-224", "MGF1", new MGF1ParameterSpec("SHA-224"), PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA256ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA256ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec.SHA256, PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA384ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA384ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA-384", "MGF1", MGF1ParameterSpec.SHA384, PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA512ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA512ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA-512", "MGF1", MGF1ParameterSpec.SHA512, PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA3-224ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA3-224ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA3-224", "MGF1", new MGF1ParameterSpec("SHA3-224"), PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA3-256ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA3-256ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA3-256", "MGF1", new MGF1ParameterSpec("SHA3-256"), PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA3-384ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA3-384ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA3-384", "MGF1", new MGF1ParameterSpec("SHA3-384"), PSource.PSpecified.DEFAULT));
         }
-        else if (pad.equals("OAEPWITHSHA3-512ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA3-512ANDMGF1PADDING".equals(pad))
         {
             initFromSpec(new OAEPParameterSpec("SHA3-512", "MGF1", new MGF1ParameterSpec("SHA3-512"), PSource.PSpecified.DEFAULT));
         }
@@ -229,7 +229,7 @@ public class CipherSpi
 
             paramSpec = params;
 
-            if (!spec.getMGFAlgorithm().equalsIgnoreCase("MGF1") && !spec.getMGFAlgorithm().equals(PKCSObjectIdentifiers.id_mgf1.getId()))
+            if (!"MGF1".equalsIgnoreCase(spec.getMGFAlgorithm()) && !spec.getMGFAlgorithm().equals(PKCSObjectIdentifiers.id_mgf1.getId()))
             {
                 throw new InvalidAlgorithmParameterException("unknown mask generation function specified");
             }

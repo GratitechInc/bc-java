@@ -146,12 +146,12 @@ public class BrokenJCEBlockCipher
     {
         String  modeName = Strings.toUpperCase(mode);
 
-        if (modeName.equals("ECB"))
+        if ("ECB".equals(modeName))
         {
             ivLength = 0;
             cipher = new PaddedBufferedBlockCipher(cipher.getUnderlyingCipher());
         }
-        else if (modeName.equals("CBC"))
+        else if ("CBC".equals(modeName))
         {
             ivLength = cipher.getUnderlyingCipher().getBlockSize();
             cipher = new PaddedBufferedBlockCipher(
@@ -201,15 +201,15 @@ public class BrokenJCEBlockCipher
     {
         String  paddingName = Strings.toUpperCase(padding);
 
-        if (paddingName.equals("NOPADDING"))
+        if ("NOPADDING".equals(paddingName))
         {
             cipher = new BufferedBlockCipher(cipher.getUnderlyingCipher());
         }
-        else if (paddingName.equals("PKCS5PADDING") || paddingName.equals("PKCS7PADDING") || paddingName.equals("ISO10126PADDING"))
+        else if ("PKCS5PADDING".equals(paddingName) || "PKCS7PADDING".equals(paddingName) || "ISO10126PADDING".equals(paddingName))
         {
             cipher = new PaddedBufferedBlockCipher(cipher.getUnderlyingCipher());
         }
-        else if (paddingName.equals("WITHCTS"))
+        else if ("WITHCTS".equals(paddingName))
         {
             cipher = new CTSBlockCipher(cipher.getUnderlyingCipher());
         }

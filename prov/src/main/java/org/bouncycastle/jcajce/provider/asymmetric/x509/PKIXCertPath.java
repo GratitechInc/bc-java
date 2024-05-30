@@ -172,7 +172,7 @@ public  class PKIXCertPath
         super("X.509");
         try
         {
-            if (encoding.equalsIgnoreCase("PkiPath"))
+            if ("PkiPath".equalsIgnoreCase(encoding))
             {
                 ASN1InputStream derInStream = new ASN1InputStream(inStream);
                 ASN1Primitive derObject = derInStream.readObject();
@@ -191,7 +191,7 @@ public  class PKIXCertPath
                         new ByteArrayInputStream(encoded)));
                 }
             }
-            else if (encoding.equalsIgnoreCase("PKCS7") || encoding.equalsIgnoreCase("PEM"))
+            else if ("PKCS7".equalsIgnoreCase(encoding) || "PEM".equalsIgnoreCase(encoding))
             {
                 inStream = new BufferedInputStream(inStream);
                 certificates = new ArrayList();
@@ -267,7 +267,7 @@ public  class PKIXCertPath
     public byte[] getEncoded(String encoding)
         throws CertificateEncodingException
     {
-        if (encoding.equalsIgnoreCase("PkiPath"))
+        if ("PkiPath".equalsIgnoreCase(encoding))
         {
             ASN1EncodableVector v = new ASN1EncodableVector();
 
@@ -279,7 +279,7 @@ public  class PKIXCertPath
 
             return toDEREncoded(new DERSequence(v));
         }
-        else if (encoding.equalsIgnoreCase("PKCS7"))
+        else if ("PKCS7".equalsIgnoreCase(encoding))
         {
             ContentInfo encInfo = new ContentInfo(PKCSObjectIdentifiers.data, null);
 
@@ -300,7 +300,7 @@ public  class PKIXCertPath
             return toDEREncoded(new ContentInfo(
                     PKCSObjectIdentifiers.signedData, sd));
         }
-        else if (encoding.equalsIgnoreCase("PEM"))
+        else if ("PEM".equalsIgnoreCase(encoding))
         {
             ByteArrayOutputStream bOut = new ByteArrayOutputStream();
             PemWriter pWrt = new PemWriter(new OutputStreamWriter(bOut));

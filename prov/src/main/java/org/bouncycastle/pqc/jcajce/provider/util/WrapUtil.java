@@ -68,31 +68,31 @@ public class WrapUtil
     {
         Wrapper kWrap;
 
-        if (keyAlgorithmName.equalsIgnoreCase("AESWRAP") || keyAlgorithmName.equalsIgnoreCase("AES"))
+        if ("AESWRAP".equalsIgnoreCase(keyAlgorithmName) || "AES".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC3394WrapEngine(new AESEngine());
         }
-        else if (keyAlgorithmName.equalsIgnoreCase("ARIA"))
+        else if ("ARIA".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC3394WrapEngine(new ARIAEngine());
         }
-        else if (keyAlgorithmName.equalsIgnoreCase("Camellia"))
+        else if ("Camellia".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC3394WrapEngine(new CamelliaEngine());
         }
-        else if (keyAlgorithmName.equalsIgnoreCase("SEED"))
+        else if ("SEED".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC3394WrapEngine(new SEEDEngine());
         }
-        else if (keyAlgorithmName.equalsIgnoreCase("AES-KWP"))
+        else if ("AES-KWP".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC5649WrapEngine(new AESEngine());
         }
-        else if (keyAlgorithmName.equalsIgnoreCase("Camellia-KWP"))
+        else if ("Camellia-KWP".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC5649WrapEngine(new CamelliaEngine());
         }
-        else if (keyAlgorithmName.equalsIgnoreCase("ARIA-KWP"))
+        else if ("ARIA-KWP".equalsIgnoreCase(keyAlgorithmName))
         {
             kWrap = new RFC5649WrapEngine(new ARIAEngine());
         }

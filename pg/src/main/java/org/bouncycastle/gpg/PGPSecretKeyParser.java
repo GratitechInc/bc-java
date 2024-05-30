@@ -94,7 +94,7 @@ public class PGPSecretKeyParser
                     key = hunk.substring(ws).trim();
                 }
 
-                if (key.equalsIgnoreCase("Key"))
+                if ("Key".equalsIgnoreCase(key))
                 {
                     break;
                 }

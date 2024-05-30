@@ -64,7 +64,7 @@ public class RoleSyntax
     {
         if(roleName == null || 
                 roleName.getTagNo() != GeneralName.uniformResourceIdentifier ||
-                ((ASN1String)roleName.getName()).getString().equals(""))
+                "".equals(((ASN1String)roleName.getName()).getString()))
         {
             throw new IllegalArgumentException("the role name MUST be non empty and MUST " +
                     "use the URI option of GeneralName");

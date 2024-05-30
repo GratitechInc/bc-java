@@ -400,7 +400,7 @@ public class ArmoredOutputStream
             {
                 String  key = (String)e.nextElement();
 
-                if (!key.equals(VERSION_HDR))
+                if (!VERSION_HDR.equals(key))
                 {
                     ArrayList values = (ArrayList)headers.get(key);
                     for (Iterator it = values.iterator(); it.hasNext();)

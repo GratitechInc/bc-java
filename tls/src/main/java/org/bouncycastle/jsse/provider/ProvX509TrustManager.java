@@ -329,11 +329,11 @@ class ProvX509TrustManager
         // Strip "[]" off IPv6 addresses
         hostname = JsseUtils.stripSquareBrackets(hostname);
 
-        if (endpointIDAlg.equalsIgnoreCase("HTTPS"))
+        if ("HTTPS".equalsIgnoreCase(endpointIDAlg))
         {
             HostnameUtil.checkHostname(hostname, certificate, true);
         }
-        else if (endpointIDAlg.equalsIgnoreCase("LDAP") || endpointIDAlg.equalsIgnoreCase("LDAPS"))
+        else if ("LDAP".equalsIgnoreCase(endpointIDAlg) || "LDAPS".equalsIgnoreCase(endpointIDAlg))
         {
             HostnameUtil.checkHostname(hostname, certificate, false);
         }

@@ -55,7 +55,7 @@ public class SMIMEUtil
             contentTransferEncoding = cte[0];
         }
 
-        return !contentTransferEncoding.equalsIgnoreCase("binary");
+        return !"binary".equalsIgnoreCase(contentTransferEncoding);
     }
 
     static class LineOutputStream extends FilterOutputStream
@@ -344,10 +344,10 @@ public class SMIMEUtil
                 contentTransferEncoding = cte[0];
             }
 
-            if (!contentTransferEncoding.equalsIgnoreCase("base64")
-                   && !contentTransferEncoding.equalsIgnoreCase("quoted-printable"))
+            if (!"base64".equalsIgnoreCase(contentTransferEncoding)
+                   && !"quoted-printable".equalsIgnoreCase(contentTransferEncoding))
             {
-                if (!contentTransferEncoding.equalsIgnoreCase("binary"))
+                if (!"binary".equalsIgnoreCase(contentTransferEncoding))
                 {
                     out = new CRLFOutputStream(out);
                 }
@@ -356,7 +356,7 @@ public class SMIMEUtil
                 return;
             }
 
-            boolean base64 = contentTransferEncoding.equalsIgnoreCase("base64");
+            boolean base64 = "base64".equalsIgnoreCase(contentTransferEncoding);
 
             //
             // Write raw content, performing canonicalization
@@ -418,7 +418,7 @@ public class SMIMEUtil
         }
         else
         {
-            if (!defaultContentTransferEncoding.equalsIgnoreCase("binary"))
+            if (!"binary".equalsIgnoreCase(defaultContentTransferEncoding))
             {
                 out = new CRLFOutputStream(out);
             }

@@ -173,7 +173,7 @@ public abstract class BaseCipherSpi
         {
             return new SecretKeySpec(encoded, wrappedKeyAlgorithm);
         }
-        else if (wrappedKeyAlgorithm.equals("") && wrappedKeyType == Cipher.PRIVATE_KEY)
+        else if ("".equals(wrappedKeyAlgorithm) && wrappedKeyType == Cipher.PRIVATE_KEY)
         {
             /*
                  * The caller doesn't know the algorithm as it is part of

@@ -102,7 +102,7 @@ public class PKCS1Encoding
             return !notStrict.equals("true");
         }
 
-        return strict == null || strict.equals("true");
+        return strict == null || "true".equals(strict);
     }
 
     public AsymmetricBlockCipher getUnderlyingCipher()

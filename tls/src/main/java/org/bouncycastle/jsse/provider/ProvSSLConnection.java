@@ -35,17 +35,17 @@ class ProvSSLConnection
 
     public byte[] getChannelBinding(String channelBinding)
     {
-        if (channelBinding.equals("tls-exporter"))
+        if ("tls-exporter".equals(channelBinding))
         {
             return getTlsContext().exportChannelBinding(ChannelBinding.tls_exporter);
         }
 
-        if (channelBinding.equals("tls-server-end-point"))
+        if ("tls-server-end-point".equals(channelBinding))
         {
             return getTlsContext().exportChannelBinding(ChannelBinding.tls_server_end_point);
         }
 
-        if (channelBinding.equals("tls-unique"))
+        if ("tls-unique".equals(channelBinding))
         {
             return getTlsContext().exportChannelBinding(ChannelBinding.tls_unique);
         }

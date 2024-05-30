@@ -291,11 +291,11 @@ public class XMSSUtil
             throw new NullPointerException("digest == null");
         }
         String algorithmName = digest.getAlgorithmName();
-        if (algorithmName.equals("SHAKE128"))
+        if ("SHAKE128".equals(algorithmName))
         {
             return 32;
         }
-        if (algorithmName.equals("SHAKE256"))
+        if ("SHAKE256".equals(algorithmName))
         {
             return 64;
         }

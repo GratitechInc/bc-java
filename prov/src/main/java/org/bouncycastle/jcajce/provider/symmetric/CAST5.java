@@ -117,7 +117,7 @@ public final class CAST5
                 return new CAST5CBCParameters(engineGetEncoded(), keyLength).getEncoded();
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 return engineGetEncoded();
             }
@@ -178,7 +178,7 @@ public final class CAST5
                 return;
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 engineInit(params);
                 return;

@@ -458,7 +458,7 @@ public class SignerInformation
                 {
                     RawContentVerifier rawVerifier = (RawContentVerifier)contentVerifier;
 
-                    if (encName.equals("RSA"))
+                    if ("RSA".equals(encName))
                     {
                         DigestInfo digInfo = new DigestInfo(new AlgorithmIdentifier(digestAlgorithm.getAlgorithm(), DERNull.INSTANCE), resultDigest);
 

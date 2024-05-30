@@ -140,11 +140,11 @@ public class IESCipher
     {
         String modeName = Strings.toUpperCase(mode);
 
-        if (modeName.equals("NONE"))
+        if ("NONE".equals(modeName))
         {
             dhaesMode = false;
         }
-        else if (modeName.equals("DHAES"))
+        else if ("DHAES".equals(modeName))
         {
             dhaesMode = true;
         }
@@ -212,11 +212,11 @@ public class IESCipher
         String paddingName = Strings.toUpperCase(padding);
 
         // TDOD: make this meaningful...
-        if (paddingName.equals("NOPADDING"))
+        if ("NOPADDING".equals(paddingName))
         {
 
         }
-        else if (paddingName.equals("PKCS5PADDING") || paddingName.equals("PKCS7PADDING"))
+        else if ("PKCS5PADDING".equals(paddingName) || "PKCS7PADDING".equals(paddingName))
         {
 
         }

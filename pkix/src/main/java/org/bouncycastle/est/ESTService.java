@@ -831,7 +831,7 @@ public class ESTService
             }
 
             URL u = new URL("https://" + server);
-            if (u.getPath().length() == 0 || u.getPath().equals("/"))
+            if (u.getPath().length() == 0 || "/".equals(u.getPath()))
             {
                 return server;
             }

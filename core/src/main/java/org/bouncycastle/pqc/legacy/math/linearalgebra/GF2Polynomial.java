@@ -173,23 +173,23 @@ public class GF2Polynomial
         blocks = ((l - 1) >> 5) + 1;
         this.value = new int[blocks];
         len = l;
-        if (value.equalsIgnoreCase("ZERO"))
+        if ("ZERO".equalsIgnoreCase(value))
         {
             assignZero();
         }
-        else if (value.equalsIgnoreCase("ONE"))
+        else if ("ONE".equalsIgnoreCase(value))
         {
             assignOne();
         }
-        else if (value.equalsIgnoreCase("RANDOM"))
+        else if ("RANDOM".equalsIgnoreCase(value))
         {
             randomize();
         }
-        else if (value.equalsIgnoreCase("X"))
+        else if ("X".equalsIgnoreCase(value))
         {
             assignX();
         }
-        else if (value.equalsIgnoreCase("ALL"))
+        else if ("ALL".equalsIgnoreCase(value))
         {
             assignAll();
         }

@@ -2470,7 +2470,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
         {
             URL url = new URL(location);
             
-            if (url.getProtocol().equals("http") || url.getProtocol().equals("https"))
+            if ("http".equals(url.getProtocol()) || "https".equals(url.getProtocol()))
             {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setUseCaches(false);

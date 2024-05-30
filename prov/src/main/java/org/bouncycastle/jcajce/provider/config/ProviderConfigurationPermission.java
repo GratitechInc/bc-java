@@ -73,31 +73,31 @@ public class ProviderConfigurationPermission
         {
             String s = tok.nextToken();
 
-            if (s.equals(THREAD_LOCAL_EC_IMPLICITLY_CA_STR))
+            if (THREAD_LOCAL_EC_IMPLICITLY_CA_STR.equals(s))
             {
                 mask |= THREAD_LOCAL_EC_IMPLICITLY_CA;
             }
-            else if (s.equals(EC_IMPLICITLY_CA_STR))
+            else if (EC_IMPLICITLY_CA_STR.equals(s))
             {
                 mask |= EC_IMPLICITLY_CA;
             }
-            else if (s.equals(THREAD_LOCAL_DH_DEFAULT_PARAMS_STR))
+            else if (THREAD_LOCAL_DH_DEFAULT_PARAMS_STR.equals(s))
             {
                 mask |= THREAD_LOCAL_DH_DEFAULT_PARAMS;
             }
-            else if (s.equals(DH_DEFAULT_PARAMS_STR))
+            else if (DH_DEFAULT_PARAMS_STR.equals(s))
             {
                 mask |= DH_DEFAULT_PARAMS;
             }
-            else if (s.equals(ACCEPTABLE_EC_CURVES_STR))
+            else if (ACCEPTABLE_EC_CURVES_STR.equals(s))
             {
                 mask |= ACCEPTABLE_EC_CURVES;
             }
-            else if (s.equals(ADDITIONAL_EC_PARAMETERS_STR))
+            else if (ADDITIONAL_EC_PARAMETERS_STR.equals(s))
             {
                 mask |= ADDITIONAL_EC_PARAMETERS;
             }
-            else if (s.equals(ALL_STR))
+            else if (ALL_STR.equals(s))
             {
                 mask |= ALL;
             }

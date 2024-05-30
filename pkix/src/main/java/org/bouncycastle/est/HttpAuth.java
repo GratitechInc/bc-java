@@ -273,7 +273,7 @@ public class HttpAuth
             String[] s = qop.split(",");
             for (int j = 0; j != s.length; j++)
             {
-                if (!s[j].equals("auth") && !s[j].equals("auth-int"))
+                if (!"auth".equals(s[j]) && !"auth-int".equals(s[j]))
                 {
                     throw new ESTException("QoP value unknown: '" + j + "'");
                 }
@@ -337,7 +337,7 @@ public class HttpAuth
         DigestCalculator authCalc = getDigestCalculator(algorithm, digestAlg);
         OutputStream authOut = authCalc.getOutputStream();
 
-        if (qopMods.get(0).equals("auth-int"))
+        if ("auth-int".equals(qopMods.get(0)))
         {
             DigestCalculator reqCalc = getDigestCalculator(algorithm, digestAlg);
             OutputStream reqOut = reqCalc.getOutputStream();
@@ -356,7 +356,7 @@ public class HttpAuth
             update(authOut, ":");
             update(authOut, Hex.toHexString(b));
         }
-        else if (qopMods.get(0).equals("auth"))
+        else if ("auth".equals(qopMods.get(0)))
         {
             update(authOut, method);
             update(authOut, ":");
@@ -389,7 +389,7 @@ public class HttpAuth
             update(responseOut, crnonce);
             update(responseOut, ":");
 
-            if (qopMods.get(0).equals("auth-int"))
+            if ("auth-int".equals(qopMods.get(0)))
             {
                 update(responseOut, "auth-int");
             }
@@ -413,13 +413,13 @@ public class HttpAuth
         hdr.put("nonce", nonce);
         hdr.put("uri", uri);
         hdr.put("response", digest);
-        if (qopMods.get(0).equals("auth-int"))
+        if ("auth-int".equals(qopMods.get(0)))
         {
             hdr.put("qop", "auth-int");
             hdr.put("nc", "00000001");
             hdr.put("cnonce", crnonce);
         }
-        else if (qopMods.get(0).equals("auth"))
+        else if ("auth".equals(qopMods.get(0)))
         {
             hdr.put("qop", "auth");
             hdr.put("nc", "00000001");
@@ -461,7 +461,7 @@ public class HttpAuth
             algorithm = algorithm.substring(0, algorithm.length() - "-SESS".length());
         }
 
-        if (algorithm.equals("SHA-512-256"))
+        if ("SHA-512-256".equals(algorithm))
         {
             return digestAlgorithmIdentifierFinder.find(NISTObjectIdentifiers.id_sha512_256);
         }

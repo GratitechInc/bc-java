@@ -22,11 +22,11 @@ public class EdDSAParameterSpec
      */
     public EdDSAParameterSpec(String curveName)
     {
-        if (curveName.equalsIgnoreCase(Ed25519))
+        if (Ed25519.equalsIgnoreCase(curveName))
         {
             this.curveName = Ed25519;
         }
-        else if (curveName.equalsIgnoreCase(Ed448))
+        else if (Ed448.equalsIgnoreCase(curveName))
         {
             this.curveName = Ed448;
         }

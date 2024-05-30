@@ -422,7 +422,7 @@ public class CTRSP800DRBG
 
     private boolean isTDEA(BlockCipher cipher)
     {
-        return cipher.getAlgorithmName().equals("DESede") || cipher.getAlgorithmName().equals("TDEA");
+        return "DESede".equals(cipher.getAlgorithmName()) || "TDEA".equals(cipher.getAlgorithmName());
     }
 
     private int getMaxSecurityStrength(BlockCipher cipher, int keySizeInBits)
@@ -431,7 +431,7 @@ public class CTRSP800DRBG
         {
             return 112;
         }
-        if (cipher.getAlgorithmName().equals("AES"))
+        if ("AES".equals(cipher.getAlgorithmName()))
         {
             return keySizeInBits;
         }

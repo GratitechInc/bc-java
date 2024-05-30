@@ -136,18 +136,18 @@ public class CipherSpi
     {
         String md = Strings.toUpperCase(mode);
         
-        if (md.equals("NONE") || md.equals("ECB"))
+        if ("NONE".equals(md) || "ECB".equals(md))
         {
             return;
         }
         
-        if (md.equals("1"))
+        if ("1".equals(md))
         {
             privateKeyOnly = true;
             publicKeyOnly = false;
             return;
         }
-        else if (md.equals("2"))
+        else if ("2".equals(md))
         {
             privateKeyOnly = false;
             publicKeyOnly = true;
@@ -163,43 +163,43 @@ public class CipherSpi
     {
         String pad = Strings.toUpperCase(padding);
 
-        if (pad.equals("NOPADDING"))
+        if ("NOPADDING".equals(pad))
         {
             cipher = new RSABlindedEngine();
         }
-        else if (pad.equals("PKCS1PADDING"))
+        else if ("PKCS1PADDING".equals(pad))
         {
             cipher = new PKCS1Encoding(new RSABlindedEngine());
         }
-        else if (pad.equals("ISO9796-1PADDING"))
+        else if ("ISO9796-1PADDING".equals(pad))
         {
             cipher = new ISO9796d1Encoding(new RSABlindedEngine());
         }
-        else if (pad.equals("OAEPPADDING"))
+        else if ("OAEPPADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine());
         }
-        else if (pad.equals("OAEPWITHSHA1ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA1ANDMGF1PADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine());
         }
-        else if (pad.equals("OAEPWITHSHA224ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA224ANDMGF1PADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine(), new SHA224Digest());
         }
-        else if (pad.equals("OAEPWITHSHA256ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA256ANDMGF1PADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine(), new SHA256Digest());
         }
-        else if (pad.equals("OAEPWITHSHA384ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA384ANDMGF1PADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine(), new SHA384Digest());
         }
-        else if (pad.equals("OAEPWITHSHA512ANDMGF1PADDING"))
+        else if ("OAEPWITHSHA512ANDMGF1PADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine(), new SHA512Digest());
         }
-        else if (pad.equals("OAEPWITHMD5ANDMGF1PADDING"))
+        else if ("OAEPWITHMD5ANDMGF1PADDING".equals(pad))
         {
             cipher = new OAEPEncoding(new RSABlindedEngine(), new MD5Digest());
         }

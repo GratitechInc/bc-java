@@ -341,12 +341,12 @@ public class BaseBlockCipher
 
         try
         {
-        if (modeName.equals("ECB"))
+        if ("ECB".equals(modeName))
         {
             ivLength = 0;
             cipher = new BufferedGenericBlockCipher(baseEngine);
         }
-        else if (modeName.equals("CBC"))
+        else if ("CBC".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             cipher = new BufferedGenericBlockCipher(
@@ -386,7 +386,7 @@ public class BaseBlockCipher
         }
         else if (modeName.startsWith("PGPCFB"))
         {
-            boolean inlineIV = modeName.equals("PGPCFBWITHIV");
+            boolean inlineIV = "PGPCFBWITHIV".equals(modeName);
 
             if (!inlineIV && modeName.length() != 6)
             {
@@ -397,25 +397,25 @@ public class BaseBlockCipher
             cipher = new BufferedGenericBlockCipher(
                 new PGPCFBBlockCipher(baseEngine, inlineIV));
         }
-        else if (modeName.equals("OPENPGPCFB"))
+        else if ("OPENPGPCFB".equals(modeName))
         {
             ivLength = 0;
             cipher = new BufferedGenericBlockCipher(
                 new OpenPGPCFBBlockCipher(baseEngine));
         }
-        else if (modeName.equals("FF1"))
+        else if ("FF1".equals(modeName))
         {
             ivLength = 0;
             cipher = new BufferedFPEBlockCipher(
                 new FPEFF1Engine(baseEngine));
         }
-        else if (modeName.equals("FF3-1"))
+        else if ("FF3-1".equals(modeName))
         {
             ivLength = 0;
             cipher = new BufferedFPEBlockCipher(
                 new FPEFF3_1Engine(baseEngine));
         }
-        else if (modeName.equals("SIC"))
+        else if ("SIC".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             if (ivLength < 16)
@@ -426,7 +426,7 @@ public class BaseBlockCipher
             cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
                 new SICBlockCipher(baseEngine)));
         }
-        else if (modeName.equals("CTR"))
+        else if ("CTR".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             fixedIv = false;
@@ -441,24 +441,24 @@ public class BaseBlockCipher
                     new SICBlockCipher(baseEngine)));
             }
         }
-        else if (modeName.equals("GOFB"))
+        else if ("GOFB".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
                 new GOFBBlockCipher(baseEngine)));
         }
-        else if (modeName.equals("GCFB"))
+        else if ("GCFB".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(
                 new GCFBBlockCipher(baseEngine)));
         }
-        else if (modeName.equals("CTS"))
+        else if ("CTS".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             cipher = new BufferedGenericBlockCipher(new CTSBlockCipher(new CBCBlockCipher(baseEngine)));
         }
-        else if (modeName.equals("CCM"))
+        else if ("CCM".equals(modeName))
         {
             ivLength = 12; // CCM nonce 7..13 bytes
             if (baseEngine instanceof DSTU7624Engine)
@@ -470,7 +470,7 @@ public class BaseBlockCipher
                 cipher = new AEADGenericBlockCipher(new CCMBlockCipher(baseEngine));
             }
         }
-        else if (modeName.equals("OCB"))
+        else if ("OCB".equals(modeName))
         {
             if (engineProvider != null)
             {
@@ -485,17 +485,17 @@ public class BaseBlockCipher
                 throw new NoSuchAlgorithmException("can't support mode " + mode);
             }
         }
-        else if (modeName.equals("EAX"))
+        else if ("EAX".equals(modeName))
         {
             ivLength = baseEngine.getBlockSize();
             cipher = new AEADGenericBlockCipher(new EAXBlockCipher(baseEngine));
         }
-        else if (modeName.equals("GCM-SIV"))
+        else if ("GCM-SIV".equals(modeName))
         {
             ivLength = 12;
             cipher = new AEADGenericBlockCipher(new GCMSIVBlockCipher(baseEngine));
         }
-        else if (modeName.equals("GCM"))
+        else if ("GCM".equals(modeName))
         {
             if (baseEngine instanceof DSTU7624Engine)
             {
@@ -534,14 +534,14 @@ public class BaseBlockCipher
 
         String paddingName = Strings.toUpperCase(padding);
 
-        if (paddingName.equals("NOPADDING"))
+        if ("NOPADDING".equals(paddingName))
         {
             if (cipher.wrapOnNoPadding())
             {
                 cipher = new BufferedGenericBlockCipher(new BufferedBlockCipher(cipher.getUnderlyingCipher()));
             }
         }
-        else if (paddingName.equals("WITHCTS") || paddingName.equals("CTSPADDING") || paddingName.equals("CS3PADDING"))
+        else if ("WITHCTS".equals(paddingName) || "CTSPADDING".equals(paddingName) || "CS3PADDING".equals(paddingName))
         {
             cipher = new BufferedGenericBlockCipher(new CTSBlockCipher(cipher.getUnderlyingCipher()));
         }
@@ -553,27 +553,27 @@ public class BaseBlockCipher
             {
                 throw new NoSuchPaddingException("Only NoPadding can be used with AEAD modes.");
             }
-            else if (paddingName.equals("PKCS5PADDING") || paddingName.equals("PKCS7PADDING"))
+            else if ("PKCS5PADDING".equals(paddingName) || "PKCS7PADDING".equals(paddingName))
             {
                 cipher = new BufferedGenericBlockCipher(cipher.getUnderlyingCipher());
             }
-            else if (paddingName.equals("ZEROBYTEPADDING"))
+            else if ("ZEROBYTEPADDING".equals(paddingName))
             {
                 cipher = new BufferedGenericBlockCipher(cipher.getUnderlyingCipher(), new ZeroBytePadding());
             }
-            else if (paddingName.equals("ISO10126PADDING") || paddingName.equals("ISO10126-2PADDING"))
+            else if ("ISO10126PADDING".equals(paddingName) || "ISO10126-2PADDING".equals(paddingName))
             {
                 cipher = new BufferedGenericBlockCipher(cipher.getUnderlyingCipher(), new ISO10126d2Padding());
             }
-            else if (paddingName.equals("X9.23PADDING") || paddingName.equals("X923PADDING"))
+            else if ("X9.23PADDING".equals(paddingName) || "X923PADDING".equals(paddingName))
             {
                 cipher = new BufferedGenericBlockCipher(cipher.getUnderlyingCipher(), new X923Padding());
             }
-            else if (paddingName.equals("ISO7816-4PADDING") || paddingName.equals("ISO9797-1PADDING"))
+            else if ("ISO7816-4PADDING".equals(paddingName) || "ISO9797-1PADDING".equals(paddingName))
             {
                 cipher = new BufferedGenericBlockCipher(cipher.getUnderlyingCipher(), new ISO7816d4Padding());
             }
-            else if (paddingName.equals("TBCPADDING"))
+            else if ("TBCPADDING".equals(paddingName))
             {
                 cipher = new BufferedGenericBlockCipher(cipher.getUnderlyingCipher(), new TBCPadding());
             }
@@ -850,14 +850,14 @@ public class BaseBlockCipher
             param = new RC5Parameters(key.getEncoded(), ((RC5ParameterSpec)params).getRounds());
             if (baseEngine.getAlgorithmName().startsWith("RC5"))
             {
-                if (baseEngine.getAlgorithmName().equals("RC5-32"))
+                if ("RC5-32".equals(baseEngine.getAlgorithmName()))
                 {
                     if (rc5Param.getWordSize() != 32)
                     {
                         throw new InvalidAlgorithmParameterException("RC5 already set up for a word size of 32 not " + rc5Param.getWordSize() + ".");
                     }
                 }
-                else if (baseEngine.getAlgorithmName().equals("RC5-64"))
+                else if ("RC5-64".equals(baseEngine.getAlgorithmName()))
                 {
                     if (rc5Param.getWordSize() != 64)
                     {

@@ -135,7 +135,7 @@ public final class IDEA
                 return new IDEACBCPar(engineGetEncoded("RAW")).getEncoded();
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 byte[]  tmp = new byte[iv.length];
 
@@ -184,12 +184,12 @@ public final class IDEA
             String format)
             throws IOException
         {
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 engineInit(params);
                 return;
             }
-            if (format.equals("ASN.1"))
+            if ("ASN.1".equals(format))
             {
                 IDEACBCPar      oct = IDEACBCPar.getInstance(params);
 

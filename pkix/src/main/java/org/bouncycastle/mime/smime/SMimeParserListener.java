@@ -47,8 +47,8 @@ public abstract class SMimeParserListener
     {
         try
         {
-            if (headers.getContentType().equals("application/pkcs7-signature")
-                || headers.getContentType().equals("application/x-pkcs7-signature"))
+            if ("application/pkcs7-signature".equals(headers.getContentType())
+                || "application/x-pkcs7-signature".equals(headers.getContentType()))
             {
                 Map<ASN1ObjectIdentifier, byte[]> hashes = new HashMap<ASN1ObjectIdentifier, byte[]>();
 
@@ -65,8 +65,8 @@ public abstract class SMimeParserListener
 
                 signedData(parserContext, headers, signedData.getCertificates(), signedData.getCRLs(), signedData.getAttributeCertificates(), signedData.getSignerInfos());
             }
-            else if (headers.getContentType().equals("application/pkcs7-mime")
-                  || headers.getContentType().equals("application/x-pkcs7-mime"))
+            else if ("application/pkcs7-mime".equals(headers.getContentType())
+                  || "application/x-pkcs7-mime".equals(headers.getContentType()))
             {
                 CMSEnvelopedDataParser envelopedDataParser = new CMSEnvelopedDataParser(inputStream);
 

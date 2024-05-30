@@ -75,11 +75,11 @@ public class KeyFactory
     protected KeySpec engineGetKeySpec(Key key, Class keySpec)
         throws InvalidKeySpecException
     {
-        if (keySpec.isAssignableFrom(PKCS8EncodedKeySpec.class) && key.getFormat().equals("PKCS#8"))
+        if (keySpec.isAssignableFrom(PKCS8EncodedKeySpec.class) && "PKCS#8".equals(key.getFormat()))
         {
             return new PKCS8EncodedKeySpec(key.getEncoded());
         }
-        else if (keySpec.isAssignableFrom(X509EncodedKeySpec.class) && key.getFormat().equals("X.509"))
+        else if (keySpec.isAssignableFrom(X509EncodedKeySpec.class) && "X.509".equals(key.getFormat()))
         {
             return new X509EncodedKeySpec(key.getEncoded());
         }

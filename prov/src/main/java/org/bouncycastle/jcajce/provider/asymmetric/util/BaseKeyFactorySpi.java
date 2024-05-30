@@ -63,11 +63,11 @@ public abstract class BaseKeyFactorySpi
         Class spec)
         throws InvalidKeySpecException
     {
-        if (spec.isAssignableFrom(PKCS8EncodedKeySpec.class) && key.getFormat().equals("PKCS#8"))
+        if (spec.isAssignableFrom(PKCS8EncodedKeySpec.class) && "PKCS#8".equals(key.getFormat()))
         {
             return new PKCS8EncodedKeySpec(key.getEncoded());
         }
-        else if (spec.isAssignableFrom(X509EncodedKeySpec.class) && key.getFormat().equals("X.509"))
+        else if (spec.isAssignableFrom(X509EncodedKeySpec.class) && "X.509".equals(key.getFormat()))
         {
             return new X509EncodedKeySpec(key.getEncoded());
         }

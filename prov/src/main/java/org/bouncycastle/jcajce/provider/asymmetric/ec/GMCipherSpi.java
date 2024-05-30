@@ -90,7 +90,7 @@ public class GMCipherSpi
     {
         String modeName = Strings.toUpperCase(mode);
 
-        if (!modeName.equals("NONE"))
+        if (!"NONE".equals(modeName))
         {
             throw new IllegalArgumentException("can't support mode " + mode);
         }
@@ -118,7 +118,7 @@ public class GMCipherSpi
         String paddingName = Strings.toUpperCase(padding);
 
         // TDOD: make this meaningful...
-        if (!paddingName.equals("NOPADDING"))
+        if (!"NOPADDING".equals(paddingName))
         {
             throw new NoSuchPaddingException("padding not available with IESCipher");
         }

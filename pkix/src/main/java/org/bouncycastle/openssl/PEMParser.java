@@ -162,11 +162,11 @@ public class PEMParser
             {
                 PemHeader hdr = (PemHeader)it.next();
 
-                if (hdr.getName().equals("Proc-Type") && hdr.getValue().equals("4,ENCRYPTED"))
+                if ("Proc-Type".equals(hdr.getName()) && "4,ENCRYPTED".equals(hdr.getValue()))
                 {
                     isEncrypted = true;
                 }
-                else if (hdr.getName().equals("DEK-Info"))
+                else if ("DEK-Info".equals(hdr.getName()))
                 {
                     dekInfo = hdr.getValue();
                 }

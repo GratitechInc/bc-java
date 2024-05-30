@@ -334,7 +334,7 @@ public final class RC2
                 }
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 return engineGetEncoded();
             }
@@ -426,7 +426,7 @@ public final class RC2
                 return;
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 engineInit(params);
                 return;

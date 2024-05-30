@@ -163,7 +163,7 @@ public class BaseStreamCipher
         String  mode)
         throws NoSuchAlgorithmException
     {
-        if (!(mode.equalsIgnoreCase("ECB") || mode.equals("NONE")))
+        if (!("ECB".equalsIgnoreCase(mode) || "NONE".equals(mode)))
         {
             throw new NoSuchAlgorithmException("can't support mode " + mode);
         }
@@ -176,7 +176,7 @@ public class BaseStreamCipher
         String  padding)
     throws NoSuchPaddingException
     {
-        if (!padding.equalsIgnoreCase("NoPadding"))
+        if (!"NoPadding".equalsIgnoreCase(padding))
         {
             throw new NoSuchPaddingException("Padding " + padding + " unknown.");
         }

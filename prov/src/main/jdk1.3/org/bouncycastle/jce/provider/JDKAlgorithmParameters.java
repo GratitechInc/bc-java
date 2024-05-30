@@ -30,7 +30,7 @@ public abstract class JDKAlgorithmParameters
 {
     protected boolean isASN1FormatString(String format)
     {
-        return format == null || format.equals("ASN.1");
+        return format == null || "ASN.1".equals(format);
     }
 
     protected AlgorithmParameterSpec engineGetParameterSpec(
@@ -68,7 +68,7 @@ public abstract class JDKAlgorithmParameters
                  return new DEROctetString(engineGetEncoded("RAW")).getEncoded();
             }
             
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 byte[]  tmp = new byte[iv.length];
 
@@ -147,7 +147,7 @@ public abstract class JDKAlgorithmParameters
                 return;
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 engineInit(params);
                 return;
@@ -230,7 +230,7 @@ public abstract class JDKAlgorithmParameters
                 }
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 return engineGetEncoded();
             }
@@ -325,7 +325,7 @@ public abstract class JDKAlgorithmParameters
                 return;
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 engineInit(params);
                 return;
@@ -363,7 +363,7 @@ public abstract class JDKAlgorithmParameters
                 return new CAST5CBCParameters(engineGetEncoded(), keyLength).getEncoded();
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 return engineGetEncoded();
             }
@@ -424,7 +424,7 @@ public abstract class JDKAlgorithmParameters
                 return;
             }
 
-            if (format.equals("RAW"))
+            if ("RAW".equals(format))
             {
                 engineInit(params);
                 return;
@@ -565,7 +565,7 @@ public abstract class JDKAlgorithmParameters
         protected byte[] engineGetEncoded(
             String format) 
         {
-            if (this.isASN1FormatString(format) || format.equalsIgnoreCase("X.509"))
+            if (this.isASN1FormatString(format) || "X.509".equalsIgnoreCase(format))
             {
                 return engineGetEncoded();
             }
@@ -627,7 +627,7 @@ public abstract class JDKAlgorithmParameters
             String format) 
             throws IOException
         {
-            if (this.isASN1FormatString(format) || format.equalsIgnoreCase("X.509"))
+            if (this.isASN1FormatString(format) || "X.509".equalsIgnoreCase(format))
             {
                 engineInit(params);
             }

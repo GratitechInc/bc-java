@@ -291,7 +291,7 @@ public class RSA
             String className)
         {
             String stem = "WITHRSAAND" + mgf;
-            if (mgf.equals("MGF1"))
+            if ("MGF1".equals(mgf))
             {
                 provider.addAlgorithm("Alg.Alias.Signature." + digest + "withRSA/PSS", digest + stem);
                 provider.addAlgorithm("Alg.Alias.Signature." + digest + "WithRSA/PSS", digest + stem);

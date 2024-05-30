@@ -125,7 +125,7 @@ class DefaultESTClientSourceProvider
             throw new IOException("EST clients must not use export ciphers");
         }
 
-        if (sock.getSession().getProtocol().equalsIgnoreCase("tlsv1"))
+        if ("tlsv1".equalsIgnoreCase(sock.getSession().getProtocol()))
         {
             try
             {

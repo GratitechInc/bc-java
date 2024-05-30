@@ -172,7 +172,7 @@ public class MiscPEMGenerator
             String dekAlgName = Strings.toUpperCase(encryptor.getAlgorithm());
 
             // Note: For backward compatibility
-            if (dekAlgName.equals("DESEDE"))
+            if ("DESEDE".equals(dekAlgName))
             {
                 dekAlgName = "DES-EDE3-CBC";
             }

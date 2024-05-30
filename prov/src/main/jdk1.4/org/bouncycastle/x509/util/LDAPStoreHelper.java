@@ -497,7 +497,7 @@ public class LDAPStoreHelper
         else
         {
             filter = "";
-            if (attributeValue.equals("**"))
+            if ("**".equals(attributeValue))
             {
                 attributeValue = "*";
             }

@@ -264,7 +264,7 @@ class HostnameUtil
         if (wildCardIndex >= 0)
         {
             // TODO[jsse] Are these checks redundant?
-            if (dnsName.equals("*") || dnsName.equals("*."))
+            if ("*".equals(dnsName) || "*.".equals(dnsName))
             {
                 return false;
             }

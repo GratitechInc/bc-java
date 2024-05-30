@@ -269,7 +269,7 @@ public class ASN1GeneralizedTime
                 if (timeZone.inDaylightTime(
                     dateF.parse(stime + "GMT" + sign + convert(hours) + ":" + convert(minutes))))
                 {
-                    hours += sign.equals("+") ? 1 : -1;
+                    hours += "+".equals(sign) ? 1 : -1;
                 }
             }
         }

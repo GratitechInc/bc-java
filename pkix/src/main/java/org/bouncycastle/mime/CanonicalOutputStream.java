@@ -20,11 +20,11 @@ public class CanonicalOutputStream
         // TODO: eventually may need to handle multiparts with binary...
         if (headers.getContentType() != null)
         {
-            is7Bit = headers.getContentType() != null && !headers.getContentType().equals("binary");
+            is7Bit = headers.getContentType() != null && !"binary".equals(headers.getContentType());
         }
         else
         {
-            is7Bit = parserContext.getDefaultContentTransferEncoding().equals("7bit");
+            is7Bit = "7bit".equals(parserContext.getDefaultContentTransferEncoding());
         }
     }
 
