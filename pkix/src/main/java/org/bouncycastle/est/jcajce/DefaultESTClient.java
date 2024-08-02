@@ -1,6 +1,8 @@
 package org.bouncycastle.est.jcajce;
 
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
@@ -82,12 +84,12 @@ class DefaultESTClient
                 ESTRequestBuilder requestBuilder = new ESTRequestBuilder(response.getOriginalRequest());
                 if (loc.startsWith("http"))
                 {
-                    redirectingRequest = requestBuilder.withURL(new URL(loc)).build();
+                    redirectingRequest = requestBuilder.withURL(Urls.create(loc, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS)).build();
                 }
                 else
                 {
                     URL u = response.getOriginalRequest().getURL();
-                    redirectingRequest = requestBuilder.withURL(new URL(u.getProtocol(), u.getHost(), u.getPort(), loc)).build();
+                    redirectingRequest = requestBuilder.withURL(Urls.create(u.getProtocol(), u.getHost(), u.getPort(), loc, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS)).build();
                 }
                 break;
             default:

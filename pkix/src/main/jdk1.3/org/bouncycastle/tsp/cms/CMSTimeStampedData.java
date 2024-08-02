@@ -1,5 +1,7 @@
 package org.bouncycastle.tsp.cms;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,7 +114,7 @@ public class CMSTimeStampedData
 
         if (dataURI != null)
         {
-            return new URL(dataURI.getString());
+            return Urls.create(dataURI.getString(), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
         }
 
         return null;
