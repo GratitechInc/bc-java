@@ -1,5 +1,6 @@
 package org.bouncycastle.math.raw;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.util.Integers;
@@ -188,7 +189,7 @@ public abstract class Mod
     public static int[] random(int[] p)
     {
         int len = p.length;
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         int[] s = Nat.create(len);
 
         int m = p[len - 1];

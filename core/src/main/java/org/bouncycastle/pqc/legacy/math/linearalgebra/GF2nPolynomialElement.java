@@ -2,6 +2,7 @@ package org.bouncycastle.pqc.legacy.math.linearalgebra;
 
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 
@@ -765,7 +766,7 @@ public class GF2nPolynomialElement
         {
             // step 1.
             GF2nPolynomialElement p = new GF2nPolynomialElement(
-                (GF2nPolynomialField)mField, new Random());
+                (GF2nPolynomialField)mField, new SecureRandom());
             // step 2.
             z = ZERO((GF2nPolynomialField)mField);
             w = (GF2nPolynomialElement)p.clone();

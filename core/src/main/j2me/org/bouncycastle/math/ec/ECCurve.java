@@ -1016,7 +1016,7 @@ public abstract class ECCurve
 
             ECFieldElement gamma, z, zeroElement = this.fromBigInteger(ECConstants.ZERO);
 
-            Random rand = new Random();
+            Random rand = new SecureRandom();
             do
             {
                 ECFieldElement t = this.fromBigInteger(new BigInteger(m, rand));
