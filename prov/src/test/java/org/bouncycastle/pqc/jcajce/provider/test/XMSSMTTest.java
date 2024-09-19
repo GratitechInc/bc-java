@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.jcajce.provider.test;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -99,6 +100,7 @@ public class XMSSMTTest
         XMSSMTKey privKey = (XMSSMTKey)kFact.generatePrivate(new PKCS8EncodedKeySpec(priv160Pkcs8));
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(priv160Ser));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         XMSSMTKey privKey2 = (XMSSMTKey)oIn.readObject();
 
@@ -120,6 +122,7 @@ public class XMSSMTTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         XMSSMTKey privKey2 = (XMSSMTKey)oIn.readObject();
 
@@ -141,6 +144,7 @@ public class XMSSMTTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         XMSSMTKey pubKey2 = (XMSSMTKey)oIn.readObject();
 

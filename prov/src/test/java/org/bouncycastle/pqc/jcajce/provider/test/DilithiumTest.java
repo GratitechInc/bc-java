@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.jcajce.provider.test;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -71,6 +72,7 @@ public class DilithiumTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         DilithiumKey privKey2 = (DilithiumKey)oIn.readObject();
 
@@ -108,6 +110,7 @@ public class DilithiumTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         DilithiumKey pubKey2 = (DilithiumKey)oIn.readObject();
 
