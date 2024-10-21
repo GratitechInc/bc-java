@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.crypto.lms;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -116,7 +117,7 @@ public class HSSTests
         String line;
         ArrayList<byte[]> blocks = new ArrayList<byte[]>();
         StringBuffer sw = new StringBuffer();
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             if (line.startsWith("!"))
             {

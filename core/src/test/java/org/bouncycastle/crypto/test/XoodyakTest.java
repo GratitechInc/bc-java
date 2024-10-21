@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,7 +50,7 @@ public class XoodyakTest
         String line;
         byte[] ptByte;
         HashMap<String, String> map = new HashMap<String, String>();
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             int a = line.indexOf('=');
             if (a < 0)
@@ -91,7 +92,7 @@ public class XoodyakTest
         String line;
         byte[] rv;
         HashMap<String, String> map = new HashMap<String, String>();
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             int a = line.indexOf('=');
             if (a < 0)

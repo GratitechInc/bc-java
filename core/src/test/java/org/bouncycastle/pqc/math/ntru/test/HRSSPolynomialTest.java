@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.math.ntru.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class HRSSPolynomialTest
         Map<String, List<Integer>> buf = new HashMap<String, List<Integer>>();
         try
         {
-            for (String line = bin.readLine(); line != null; line = bin.readLine())
+            for (String line = BoundedLineReader.readLine(bin, 5_000_000); line != null; line = BoundedLineReader.readLine(bin, 5_000_000))
             {
                 if (line.startsWith("#"))
                 {

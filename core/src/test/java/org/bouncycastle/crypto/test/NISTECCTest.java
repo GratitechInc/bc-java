@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.bouncycastle.asn1.nist.NISTNamedCurves;
 import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.crypto.ec.CustomNamedCurves;
@@ -32,7 +33,7 @@ public class NISTECCTest
         BufferedReader br = new BufferedReader(new InputStreamReader(TestResourceFinder.findTestResource("crypto", "nist_ecc.txt")));
         try
         {
-            String line = br.readLine();
+            String line = BoundedLineReader.readLine(br, 5_000_000);
             X9ECParameters curve = null;
             X9ECParameters curveCustom = null;
             BigInteger k = null;
@@ -41,7 +42,7 @@ public class NISTECCTest
 
             while (line != null)
             {
-                while (null != (line = br.readLine()))
+                while (null != (line = BoundedLineReader.readLine(br, 5_000_000)))
                 {
                     Matcher matcher = Pattern.compile("^ ?(\\w+):? =? ?(\\w+)").matcher(line);
                     if (!matcher.matches())

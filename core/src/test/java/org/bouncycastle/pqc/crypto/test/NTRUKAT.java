@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +41,7 @@ public class NTRUKAT
         HashMap<String, String> buf = new HashMap<String, String>();
         try
         {
-            for (String line = bin.readLine(); line != null; line = bin.readLine())
+            for (String line = BoundedLineReader.readLine(bin, 5_000_000); line != null; line = BoundedLineReader.readLine(bin, 5_000_000))
             {
                 if (line.startsWith("#"))
                 {

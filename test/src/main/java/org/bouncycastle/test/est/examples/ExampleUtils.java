@@ -1,5 +1,6 @@
 package org.bouncycastle.test.est.examples;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -444,7 +445,7 @@ public class ExampleUtils
         String line;
         System.out.println();
         System.out.println(question + " ");
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             if (Strings.toLowerCase(line).startsWith("y"))
             {

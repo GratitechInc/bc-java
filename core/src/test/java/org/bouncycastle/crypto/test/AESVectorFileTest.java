@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class AESVectorFileTest
 
         try
         {
-            String line = in.readLine();
+            String line = BoundedLineReader.readLine(in, 5_000_000);
 
             while (line != null)
             {
@@ -125,7 +126,7 @@ public class AESVectorFileTest
                     }
                 }
 
-                line = in.readLine();
+                line = BoundedLineReader.readLine(in, 5_000_000);
             }
             try
             {

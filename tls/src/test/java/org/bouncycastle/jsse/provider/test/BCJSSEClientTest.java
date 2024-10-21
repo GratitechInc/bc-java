@@ -1,5 +1,6 @@
 package org.bouncycastle.jsse.provider.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -227,7 +228,7 @@ public class BCJSSEClientTest
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
         String line;
-        while ((line = reader.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null)
         {
 //            System.out.println("<<< " + line);
 

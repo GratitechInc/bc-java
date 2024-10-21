@@ -1,5 +1,6 @@
 package org.bouncycastle.tls.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,7 +35,7 @@ public class PSKTls13ClientTest
         BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
         String line;
-        while ((line = reader.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null)
         {
             System.out.println(">>> " + line);
         }

@@ -1,5 +1,6 @@
 package org.bouncycastle.openpgp.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -128,7 +129,7 @@ public class PGPUnicodeTest
             InputStream passwordFile = this.getClass().getResourceAsStream("unicode/" + "passphrase_cyr.txt");
             Reader reader = new InputStreamReader(passwordFile, Charset.forName("UTF-8"));
             BufferedReader in = new BufferedReader(reader);
-            String passphrase = in.readLine();
+            String passphrase = BoundedLineReader.readLine(in, 5_000_000);
             in.close();
             passwordFile.close();
 

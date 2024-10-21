@@ -1,5 +1,6 @@
 package org.bouncycastle.test.est.examples;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -20,7 +21,7 @@ class SuffixList
         try
         {
             String line = null;
-            while ((line = bin.readLine()) != null)
+            while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
             {
                 if (line.length() == 0 || (line.startsWith("//") && !line.startsWith("// xn--")))
                 {

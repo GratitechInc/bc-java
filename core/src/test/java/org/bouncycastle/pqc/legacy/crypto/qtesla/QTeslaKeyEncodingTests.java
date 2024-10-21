@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.legacy.crypto.qtesla;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -734,11 +735,11 @@ public class QTeslaKeyEncodingTests
 
         BufferedReader bin = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/org/bouncycastle/pqc/crypto/test/q3pIII.txt")));
 
-        byte[] seed = Hex.decode(bin.readLine());
-        byte[] msg = Hex.decode(bin.readLine());
-        byte[] pk = Hex.decode(bin.readLine());
-        byte[] sk = Hex.decode(bin.readLine());
-        byte[] sm = Hex.decode(bin.readLine());
+        byte[] seed = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] msg = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] pk = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] sk = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] sm = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
 
         bin.close();
 
@@ -769,11 +770,11 @@ public class QTeslaKeyEncodingTests
     {
         BufferedReader bin = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/org/bouncycastle/pqc/crypto/test/q3pIII.txt")));
 
-        byte[] seed = Hex.decode(bin.readLine());
-        byte[] msg = Hex.decode(bin.readLine());
-        byte[] publicKey = Hex.decode(bin.readLine());
-        byte[] sk = Hex.decode(bin.readLine());
-        byte[] sm = Hex.decode(bin.readLine());
+        byte[] seed = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] msg = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] publicKey = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] sk = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] sm = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
 
         bin.close();
 
@@ -826,7 +827,7 @@ public class QTeslaKeyEncodingTests
         String line;
         ArrayList<Long> longs = new ArrayList<Long>();
 
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             line = line.trim();
             if (line.length() > 0)

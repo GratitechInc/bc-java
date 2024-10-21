@@ -1,5 +1,6 @@
 package org.bouncycastle.openpgp.examples.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
@@ -431,7 +432,7 @@ public class AllTests
         
         out.reset();
         
-        return bRd.readLine();
+        return BoundedLineReader.readLine(bRd, 5_000_000);
     }
     
     public static void main (String[] args)
