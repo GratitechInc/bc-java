@@ -3,6 +3,7 @@ package org.bouncycastle.crypto.test;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -210,7 +211,7 @@ public class AsconTest
     private void implTestBufferingEngine(AsconEngine.AsconParameters asconParameters)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         int plaintextLength = 256;
         byte[] plaintext = new byte[plaintextLength];
@@ -363,7 +364,7 @@ public class AsconTest
             fail(ascon.getAlgorithmName() + " functions can be called before initialization");
         }
 
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         int randomNum;
         while ((randomNum = rand.nextInt(100)) == keySize) ;
         byte[] k1 = new byte[randomNum];
@@ -688,7 +689,7 @@ public class AsconTest
     private void implTestVectorsDigest(AsconDigest.AsconParameters asconParameters, String filename)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
         AsconDigest ascon = createDigest(asconParameters);
         InputStream src = TestResourceFinder.findTestResource("crypto/ascon", filename + "_LWC_HASH_KAT_256.txt");
         BufferedReader bin = new BufferedReader(new InputStreamReader(src));
@@ -735,7 +736,7 @@ public class AsconTest
     private void implTestVectorsEngine(AsconEngine.AsconParameters asconParameters, String filename)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
         AsconEngine ascon = createEngine(asconParameters);
         InputStream src = TestResourceFinder.findTestResource("crypto/ascon", "LWC_AEAD_KAT_" + filename + ".txt");
         BufferedReader bin = new BufferedReader(new InputStreamReader(src));
@@ -800,7 +801,7 @@ public class AsconTest
     private void implTestVectorsXof(AsconXof.AsconParameters asconParameters, String filename)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
         AsconXof ascon = createXof(asconParameters);
         InputStream src = TestResourceFinder.findTestResource("crypto/ascon", filename + "_LWC_HASH_KAT_256.txt");
         BufferedReader bin = new BufferedReader(new InputStreamReader(src));

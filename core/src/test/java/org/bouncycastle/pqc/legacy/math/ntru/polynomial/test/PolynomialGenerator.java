@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.legacy.math.ntru.polynomial.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.pqc.legacy.math.ntru.polynomial.IntegerPolynomial;
@@ -16,7 +17,7 @@ public class PolynomialGenerator
      */
     public static IntegerPolynomial generateRandom(int N, int q)
     {
-        Random rng = new Random();
+        Random rng = new SecureRandom();
         int[] coeffs = new int[N];
         for (int i = 0; i < N; i++)
         {

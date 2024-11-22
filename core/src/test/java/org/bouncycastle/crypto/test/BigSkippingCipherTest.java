@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import junit.framework.TestCase;
@@ -25,7 +26,7 @@ public class BigSkippingCipherTest
         CipherParameters internalCounterParams = new ParametersWithIV(new KeyParameter(Hex.decode("5F060D3716B345C253F6749ABAC10917")), Hex.decode("00000000000000000000"));
         SICBlockCipher linearEngine = new SICBlockCipher(AESEngine.newInstance());
         SICBlockCipher skippingEngine = new SICBlockCipher(AESEngine.newInstance());
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         linearEngine.init(true, externalCounterParams);
         skippingEngine.init(false, internalCounterParams);
@@ -74,7 +75,7 @@ public class BigSkippingCipherTest
         CipherParameters params = new ParametersWithIV(new KeyParameter(Hex.decode("0053A6F94C9FF24598EB3E91E4378ADD3083D6297CCF2275C81B6EC11467BA0D")), Hex.decode("0D74DB42A91077DE"));
         Salsa20Engine linearEngine = new Salsa20Engine();
         Salsa20Engine skippingEngine = new Salsa20Engine();
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         linearEngine.init(true, params);
         skippingEngine.init(false, params);
@@ -123,7 +124,7 @@ public class BigSkippingCipherTest
         CipherParameters params = new ParametersWithIV(new KeyParameter(Hex.decode("0053A6F94C9FF24598EB3E91E4378ADD3083D6297CCF2275C81B6EC11467BA0D")), Hex.decode("0D74DB42A91077DE"));
         ChaChaEngine linearEngine = new ChaChaEngine();
         ChaChaEngine skippingEngine = new ChaChaEngine();
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         linearEngine.init(true, params);
         skippingEngine.init(false, params);

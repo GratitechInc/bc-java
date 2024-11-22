@@ -2,6 +2,7 @@ package org.bouncycastle.cms.test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -97,7 +98,7 @@ public class NewCompressedDataStreamTest
         throws Exception
     {
         byte[]  testData = new byte[10000];
-        Random  rand = new Random();
+        Random  rand = new SecureRandom();
         
         rand.setSeed(0);
 

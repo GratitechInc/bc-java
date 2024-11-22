@@ -1,5 +1,6 @@
 package org.bouncycastle.util.utiltest;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.util.Integers;
@@ -11,7 +12,7 @@ public class IntegersTest
 {
     public void testBitCount()
     {
-    	Random random = new Random();
+    	Random random = new SecureRandom();
 
     	for (int pos = 0; pos <= 24; ++pos)
     	{

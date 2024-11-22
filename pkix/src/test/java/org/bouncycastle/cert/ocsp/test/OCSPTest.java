@@ -3,6 +3,7 @@ package org.bouncycastle.cert.ocsp.test;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.KeyPair;
+import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Date;
 import java.util.Random;
@@ -382,7 +383,7 @@ public class OCSPTest
         Vector oids = new Vector();
         Vector values = new Vector();
         byte[] sampleNonce = new byte[16];
-        Random rand = new Random();
+        Random rand = new SecureRandom();
 
         rand.nextBytes(sampleNonce);
 
@@ -572,7 +573,7 @@ public class OCSPTest
         gen = new OCSPReqBuilder();
 
         byte[] sampleNonce = new byte[16];
-        Random rand = new Random();
+        Random rand = new SecureRandom();
 
         rand.nextBytes(sampleNonce);
 
@@ -805,7 +806,7 @@ public class OCSPTest
         Vector oids = new Vector();
         Vector values = new Vector();
         byte[] sampleNonce = new byte[16];
-        Random rand = new Random();
+        Random rand = new SecureRandom();
 
         rand.nextBytes(sampleNonce);
 

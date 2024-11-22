@@ -32,7 +32,7 @@ public class McElieceFujisakiCipherTest
     {
         int numPassesKPG = 1;
         int numPassesEncDec = 10;
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         byte[] mBytes;
         for (int j = 0; j < numPassesKPG; j++)
         {

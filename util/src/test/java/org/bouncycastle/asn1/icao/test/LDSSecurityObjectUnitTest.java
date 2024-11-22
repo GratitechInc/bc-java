@@ -1,6 +1,7 @@
 package org.bouncycastle.asn1.icao.test;
 
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.asn1.ASN1EncodableVector;
@@ -26,7 +27,7 @@ public class LDSSecurityObjectUnitTest
     
     private byte[] generateHash()
     {
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         byte[] bytes = new byte[20];
         
         for (int i = 0; i != bytes.length; i++)

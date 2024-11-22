@@ -1,5 +1,6 @@
 package org.bouncycastle.asn1.cmc.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.asn1.cmc.BodyPartID;
@@ -20,7 +21,7 @@ public class BodyPartReferenceTest
     public void performTest()
         throws Exception
     {
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         BodyPartReference ch0 = null;
         BodyPartReference ch1 = null;
         {

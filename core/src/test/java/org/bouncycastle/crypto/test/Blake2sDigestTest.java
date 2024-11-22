@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.crypto.digests.Blake2sDigest;
@@ -79,7 +80,7 @@ public class Blake2sDigestTest
     {
         Blake2sDigest digest = new Blake2sDigest(Hex.decode(
             keyedTestVectors[0][1]));
-        Random random = new Random();
+        Random random = new SecureRandom();
         for (int i = 0; i < 100; i++)
         {
             for (int j = 0; j != keyedTestVectors.length; j++)
