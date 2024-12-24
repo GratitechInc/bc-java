@@ -1,5 +1,6 @@
 package org.bouncycastle.jce.provider.test;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -1018,6 +1019,7 @@ public class BlockCipherTest
 
          bIn = new ByteArrayInputStream(bOut.toByteArray());
          ObjectInputStream oIn = new ObjectInputStream(bIn);
+         ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
          in = Cipher.getInstance(algorithm, "BC");
          out = Cipher.getInstance(algorithm, "BC");
