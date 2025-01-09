@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
+import java.nio.file.Files;
 import java.security.KeyPair;
 import java.security.MessageDigest;
 import java.security.PrivateKey;
@@ -1126,7 +1127,7 @@ public class ERSTest
     public void testDirUtil()
         throws Exception
     {
-        File rootDir = File.createTempFile("ers", ".dir");
+        File rootDir = Files.createTempFile("ers", ".dir").toFile();
         rootDir.delete();
         if (rootDir.mkdir())
         {

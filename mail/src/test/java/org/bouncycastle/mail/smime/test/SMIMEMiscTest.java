@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
@@ -145,7 +146,7 @@ public class SMIMEMiscTest
         gen.addCertificates(certs);
 
         MimeMultipart     smm = gen.generate(mp);
-        File              tmpFile = File.createTempFile("bcTest", ".mime");
+        File              tmpFile = Files.createTempFile("bcTest", ".mime").toFile();
 
         MimeMessage       msg = createMimeMessage(tmpFile, smm);
         
@@ -182,7 +183,7 @@ public class SMIMEMiscTest
         gen.addCertificates(certs);
 
         MimeMultipart     smm = gen.generate(mp);
-        File              tmpFile = File.createTempFile("bcTest", ".mime");
+        File              tmpFile = Files.createTempFile("bcTest", ".mime").toFile();
 
         MimeMessage       msg = createMimeMessage(tmpFile, smm);
 
@@ -252,7 +253,7 @@ public class SMIMEMiscTest
         gen.addCertificates(certs);
 
         MimeMultipart     smm = gen.generate(mp);
-        File              tmpFile = File.createTempFile("bcTest", ".mime");
+        File              tmpFile = Files.createTempFile("bcTest", ".mime").toFile();
 
         MimeMessage       msg = createMimeMessage(tmpFile, smm);
 
