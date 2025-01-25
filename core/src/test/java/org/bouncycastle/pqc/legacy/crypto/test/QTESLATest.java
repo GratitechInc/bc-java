@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.legacy.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -194,11 +195,11 @@ public class QTESLATest
         //
         BufferedReader bin = new BufferedReader(new InputStreamReader(TestResourceFinder.findTestResource("pqc/crypto", "q3pIII.txt")));
 
-        byte[] seed = Hex.decode(bin.readLine());
-        byte[] msg = Hex.decode(bin.readLine());
-        byte[] publicKey = Hex.decode(bin.readLine());
-        byte[] sk = Hex.decode(bin.readLine());
-        byte[] sm = Hex.decode(bin.readLine());
+        byte[] seed = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] msg = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] publicKey = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] sk = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
+        byte[] sm = Hex.decode(BoundedLineReader.readLine(bin, 5_000_000));
 
         bin.close();
 
@@ -407,7 +408,7 @@ public class QTESLATest
 
             String line = null;
 
-            while ((line = bin.readLine()) != null)
+            while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
             {
                 line = line.trim();
                 if (line.length() == 0 || line.startsWith("#"))

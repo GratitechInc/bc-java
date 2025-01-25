@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -45,22 +46,22 @@ public class SNTRUPrimeTest
             BufferedReader resourceReader = new BufferedReader(new InputStreamReader(resource));
 
             String line;
-            while ((line = resourceReader.readLine()) != null)
+            while ((line = BoundedLineReader.readLine(resourceReader, 5_000_000)) != null)
             {
                 if (! line.startsWith("count"))
                     continue;
 
                 int a = line.indexOf("=");
                 int count = Integer.parseInt(line.substring(a + 1).trim());
-                line = resourceReader.readLine(); a = line.indexOf("=");
+                line = BoundedLineReader.readLine(resourceReader, 5_000_000); a = line.indexOf("=");
                 byte[] seed = Hex.decode(line.substring(a + 1).trim());
-                line = resourceReader.readLine(); a = line.indexOf("=");
+                line = BoundedLineReader.readLine(resourceReader, 5_000_000); a = line.indexOf("=");
                 byte[] pk = Hex.decode(line.substring(a + 1).trim());
-                line = resourceReader.readLine(); a = line.indexOf("=");
+                line = BoundedLineReader.readLine(resourceReader, 5_000_000); a = line.indexOf("=");
                 byte[] sk = Hex.decode(line.substring(a + 1).trim());
-                line = resourceReader.readLine(); a = line.indexOf("=");
+                line = BoundedLineReader.readLine(resourceReader, 5_000_000); a = line.indexOf("=");
                 byte[] ct = Hex.decode(line.substring(a + 1).trim());
-                line = resourceReader.readLine(); a = line.indexOf("=");
+                line = BoundedLineReader.readLine(resourceReader, 5_000_000); a = line.indexOf("=");
                 byte[] ss = Hex.decode(line.substring(a + 1).trim());
 
                 if (sampler.skipTest(count))

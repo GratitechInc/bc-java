@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -169,7 +170,7 @@ public class SCryptTest
             TestResourceFinder.findTestResource("crypto", "SCryptTestVectors.txt")));
 
         int count = 0;
-        String line = br.readLine();
+        String line = BoundedLineReader.readLine(br, 5_000_000);
 
         while (line != null)
         {
@@ -177,7 +178,7 @@ public class SCryptTest
             String header = line;
             StringBuffer data = new StringBuffer();
 
-            while (!isEndData(line = br.readLine()))
+            while (!isEndData(line = BoundedLineReader.readLine(br, 5_000_000)))
             {
                 for (int i = 0; i != line.length(); i++)
                 {
