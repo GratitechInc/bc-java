@@ -1,5 +1,7 @@
 package org.bouncycastle.pkix.jcajce;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -2468,7 +2470,7 @@ public class PKIXCertPathReviewer extends CertPathValidatorUtilities
         X509CRL result = null;
         try
         {
-            URL url = new URL(location);
+            URL url = Urls.create(location, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             
             if (url.getProtocol().equals("http") || url.getProtocol().equals("https"))
             {
