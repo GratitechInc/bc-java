@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.legacy.math.ntru.polynomial.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import junit.framework.TestCase;
@@ -21,7 +22,7 @@ public class LongPolynomial2Test
         assertTrue(Arrays.areEqual(c1.coeffs, c2.coeffs));
 
         // test 10 random polynomials
-        Random rng = new Random();
+        Random rng = new SecureRandom();
         for (int i = 0; i < 10; i++)
         {
             int N = 2 + rng.nextInt(2000);

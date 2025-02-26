@@ -1,5 +1,6 @@
 package org.bouncycastle.tls.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.Vector;
 
@@ -53,7 +54,7 @@ public class TlsUtilsTest
 
         if (randomise)
         {
-            Random r = new Random();
+            Random r = new SecureRandom();
             int count = result.size();
             for (int src = 0; src < count; ++src)
             {

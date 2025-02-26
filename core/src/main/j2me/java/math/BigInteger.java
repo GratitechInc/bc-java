@@ -1,5 +1,6 @@
 package java.math;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.Stack;
 import java.util.Vector;
@@ -1314,7 +1315,7 @@ public class BigInteger
         int s = n.getLowestSetBitMaskFirst(-1 << 1);
         BigInteger r = n.shiftRight(s);
 
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         // NOTE: Avoid conversion to/from Montgomery form and check for R/-R as result instead
 

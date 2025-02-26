@@ -505,7 +505,7 @@ public class GF2nONBField
 
     private int elementOfOrder(int k, int p)
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
         int m = 0;
         while (m == 0)
         {

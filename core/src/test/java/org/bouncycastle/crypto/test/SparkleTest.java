@@ -3,6 +3,7 @@ package org.bouncycastle.crypto.test;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -189,7 +190,7 @@ public class SparkleTest
     private void implTestBufferingEngine(SparkleEngine.SparkleParameters sparkleParameters)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         int plaintextLength = 256;
         byte[] plaintext = new byte[plaintextLength];
@@ -283,7 +284,7 @@ public class SparkleTest
     private void implTestVectorsDigest(SparkleDigest.SparkleParameters sparkleParameters, String filename)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
         SparkleDigest sparkle = createDigest(sparkleParameters);
         InputStream src = TestResourceFinder.findTestResource("crypto/sparkle", "LWC_HASH_KAT_" + filename + ".txt");
         BufferedReader bin = new BufferedReader(new InputStreamReader(src));
@@ -330,7 +331,7 @@ public class SparkleTest
     private void implTestVectorsEngine(SparkleEngine.SparkleParameters pbp, String filename)
         throws Exception
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
         SparkleEngine sparkle = createEngine(pbp);
         InputStream src = TestResourceFinder.findTestResource("crypto/sparkle", "LWC_AEAD_KAT_"
             + filename + ".txt");
@@ -456,7 +457,7 @@ public class SparkleTest
             fail(sparkle.getAlgorithmName() + " functions can be called before initialization");
         }
 
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         int randomNum;
         while ((randomNum = rand.nextInt(100)) == keysize) ;
         byte[] k1 = new byte[randomNum];

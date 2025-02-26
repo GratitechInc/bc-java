@@ -2,6 +2,7 @@ package org.bouncycastle.util.encoders.test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public abstract class AbstractCoderTest extends TestCase
     
     protected void setUp()
     {
-        r = new Random();
+        r = new SecureRandom();
     }
 
     private void checkArrayOfSize(int size) 

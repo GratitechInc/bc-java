@@ -22,7 +22,7 @@ public class ArrayEncoderTest
 
     public void testEncodeDecodeMod3Sves()
     {
-        Random rng = new Random();
+        Random rng = new SecureRandom();
         byte[] data = new byte[180];
         rng.nextBytes(data);
         int[] coeffs = ArrayEncoder.decodeMod3Sves(data, 960);
