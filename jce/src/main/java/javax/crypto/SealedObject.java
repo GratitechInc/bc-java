@@ -1,5 +1,6 @@
 package javax.crypto;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.*;
 import java.security.*;
 
@@ -208,6 +209,7 @@ public class SealedObject
         byte[] encodedObject = c.doFinal(encryptedContent);
         ObjectInputStream oIn = new ObjectInputStream(
             new ByteArrayInputStream(encodedObject));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
         return oIn.readObject();
     }
 

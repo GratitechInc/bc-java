@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.jcajce.provider.test;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -88,6 +89,7 @@ public class NewHopeTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         NHKey privKey2 = (NHKey)oIn.readObject();
 
@@ -115,6 +117,7 @@ public class NewHopeTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         NHKey pubKey2 = (NHKey)oIn.readObject();
 

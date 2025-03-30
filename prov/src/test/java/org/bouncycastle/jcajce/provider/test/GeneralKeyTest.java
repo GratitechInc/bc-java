@@ -1,5 +1,6 @@
 package org.bouncycastle.jcajce.provider.test;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -388,6 +389,7 @@ public class GeneralKeyTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         Object read = oIn.readObject();
 
