@@ -6,6 +6,7 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.security.cert.CertificateParsingException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
@@ -462,7 +463,7 @@ public class SMIMEUtil
     {
         try
         {
-            return new WriteOnceFileBackedMimeBodyPart(content.getContentStream(), File.createTempFile("bcMail", ".mime"));
+            return new WriteOnceFileBackedMimeBodyPart(content.getContentStream(), Files.createTempFile("bcMail", ".mime").toFile());
         }
         catch (IOException e)
         {
@@ -483,7 +484,7 @@ public class SMIMEUtil
     {
         try
         {
-            return toMimeBodyPart(content, File.createTempFile("bcMail", ".mime"));
+            return toMimeBodyPart(content, Files.createTempFile("bcMail", ".mime").toFile());
         }
         catch (IOException e)
         {

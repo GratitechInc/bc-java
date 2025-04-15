@@ -7,6 +7,7 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
 import java.security.KeyPair;
 import java.security.MessageDigest;
 import java.security.Security;
@@ -513,7 +514,7 @@ public class NewSMIMESignedTest
     public void testSHA1WithRSAEncapsulatedParserAndFile()
         throws Exception
     {
-        File         tmp = File.createTempFile("bcTest", ".mime");
+        File         tmp = Files.createTempFile("bcTest", ".mime").toFile();
         MimeBodyPart res = generateEncapsulatedRsa("SHA1withRSA", msg);       
         SMIMESignedParser s = new SMIMESignedParser(new JcaDigestCalculatorProviderBuilder().setProvider(BC).build(), res, tmp);
         FileBackedMimeBodyPart content = (FileBackedMimeBodyPart)s.getContent();
