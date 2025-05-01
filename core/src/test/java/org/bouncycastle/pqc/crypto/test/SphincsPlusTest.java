@@ -1,5 +1,6 @@
 package org.bouncycastle.pqc.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,7 +57,7 @@ public class SphincsPlusTest
             System.out.println(name);
             String line = null;
             HashMap<String, String> buf = new HashMap<String, String>();
-            while ((line = bin.readLine()) != null)
+            while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
             {
                 line = line.trim();
 

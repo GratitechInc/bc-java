@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.IOException;
@@ -161,7 +162,7 @@ public class SHA3DigestTest
 
     private String readLine(BufferedReader r) throws IOException
     {
-        String line = r.readLine();
+        String line = BoundedLineReader.readLine(r, 5_000_000);
         return line == null ? null : stripFromChar(line, '#').trim();
     }
 

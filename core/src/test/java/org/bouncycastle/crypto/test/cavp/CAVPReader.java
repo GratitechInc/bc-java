@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test.cavp;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -58,7 +59,7 @@ public class CAVPReader
 
         while (true)
         {
-            final String line = lineReader.readLine();
+            final String line = BoundedLineReader.readLine(lineReader, 5_000_000);
             if (line == null)
             {
                 listener.receiveEnd();
