@@ -1,5 +1,7 @@
 package org.bouncycastle.jce.provider;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -789,7 +791,7 @@ class CertPathValidatorUtilities
                         {
                             try
                             {
-                                URL distributionPoint = new URL(((ASN1String)name.getName()).getString());
+                                URL distributionPoint = Urls.create(((ASN1String)name.getName()).getString(), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
                                 PKIXCRLStore store = CrlCache.getCrl(certFact, validDate, distributionPoint);
                                 if (store != null)
                                 {
@@ -1137,7 +1139,7 @@ class CertPathValidatorUtilities
                             try
                             {
                                 PKIXCRLStore store = CrlCache.getCrl(certFact, validityDate,
-                                    new URL(((ASN1String)name.getName()).getString()));
+                                    Urls.create(((ASN1String)name.getName()).getString(), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
                                 if (store != null)
                                 {
                                     ArrayList ls = new ArrayList();

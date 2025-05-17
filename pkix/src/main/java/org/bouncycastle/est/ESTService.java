@@ -1,5 +1,7 @@
 package org.bouncycastle.est;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -137,7 +139,7 @@ public class ESTService
         boolean failedBeforeClose = false;
         try
         {
-            url = new URL(server + CACERTS);
+            url = Urls.create(server + CACERTS, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 
             ESTClient client = clientProvider.makeClient();
             ESTRequest req = new ESTRequestBuilder("GET", url).withClient(client).build();
@@ -304,7 +306,7 @@ public class ESTService
         {
             final byte[] data = annotateRequest(certificationRequest.getEncoded()).getBytes();
 
-            URL url = new URL(server + (certGen ? SERVERGEN : (reenroll ? SIMPLE_REENROLL : SIMPLE_ENROLL)));
+            URL url = Urls.create(server + (certGen ? SERVERGEN : (reenroll ? SIMPLE_REENROLL : SIMPLE_ENROLL)), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 
 
             ESTClient client = clientProvider.makeClient();
@@ -412,7 +414,7 @@ public class ESTService
         ESTResponse resp = null;
         try
         {
-            URL url = new URL(server + (reEnroll ? SIMPLE_REENROLL : SIMPLE_ENROLL));
+            URL url = Urls.create(server + (reEnroll ? SIMPLE_REENROLL : SIMPLE_ENROLL), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             ESTClient client = clientProvider.makeClient();
 
             //
@@ -681,7 +683,7 @@ public class ESTService
         URL url = null;
         try
         {
-            url = new URL(server + CSRATTRS);
+            url = Urls.create(server + CSRATTRS, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 
             ESTClient client = clientProvider.makeClient();
             ESTRequest req = new ESTRequestBuilder("GET", url).withClient(client).build(); //    new ESTRequest("GET", url, null);
@@ -830,7 +832,7 @@ public class ESTService
                 throw new IllegalArgumentException("Server contains scheme, must only be <dnsname/ipaddress>:port, https:// will be added arbitrarily.");
             }
 
-            URL u = new URL("https://" + server);
+            URL u = Urls.create("https://" + server, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             if (u.getPath().length() == 0 || u.getPath().equals("/"))
             {
                 return server;
