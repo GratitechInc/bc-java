@@ -88,7 +88,7 @@ public class McElieceKobaraImaiCipherTest
 
         int numPassesKPG = 0;   // TODO: this algorithm is broken
         int numPassesEncDec = 10;
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         byte[] mBytes;
         for (int j = 0; j < numPassesKPG; j++)
         {

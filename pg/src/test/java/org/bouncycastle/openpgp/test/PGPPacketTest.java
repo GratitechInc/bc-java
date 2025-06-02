@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.SecureRandom;
 import java.security.Security;
 import java.util.Date;
 import java.util.Iterator;
@@ -25,7 +26,7 @@ public class PGPPacketTest
         PGPLiteralDataGenerator generator)
         throws IOException
     {
-        Random                  rand = new Random();
+        Random                  rand = new SecureRandom();
         byte[]                  buf = new byte[MAX];
         
         rand.nextBytes(buf);

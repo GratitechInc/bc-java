@@ -1,5 +1,6 @@
 package org.bouncycastle.util.encoders.test;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -42,7 +43,7 @@ public class EncoderTest
     {
         try
         {
-            Random _r = new Random();
+            Random _r = new SecureRandom();
             
             byte[] _orig1024 = new byte[1024];
             _r.nextBytes(_orig1024);
@@ -155,7 +156,7 @@ public class EncoderTest
     {
         try
         {
-            Random _r = new Random();
+            Random _r = new SecureRandom();
             
             byte[] _orig1024 = new byte[1024];
             _r.nextBytes(_orig1024);

@@ -1,5 +1,6 @@
 package org.bouncycastle.openpgp.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.bcpg.CRC24;
@@ -18,7 +19,7 @@ public class CRC24Test
     static
     {
         Arrays.fill(TEST_VECTOR_2, 0, TEST_VECTOR_2.length - 1, (byte)12);
-        new Random().nextBytes(LARGE_RANDOM);
+        new SecureRandom().nextBytes(LARGE_RANDOM);
     }
 
     public static void main(String[] args)

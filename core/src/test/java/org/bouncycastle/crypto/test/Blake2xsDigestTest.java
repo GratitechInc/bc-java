@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -2582,7 +2583,7 @@ public class Blake2xsDigestTest
 
     private void testBlake2xsTestVectors()
     {
-        Random random = new Random();
+        Random random = new SecureRandom();
 
         for (int i = 0; i != Blake2xsDigestTest.xofTestVectors.length; i++)
         {

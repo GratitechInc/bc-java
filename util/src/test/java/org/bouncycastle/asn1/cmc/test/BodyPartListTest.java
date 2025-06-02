@@ -1,5 +1,6 @@
 package org.bouncycastle.asn1.cmc.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.asn1.DERSequence;
@@ -18,7 +19,7 @@ public class BodyPartListTest
     public void performTest()
         throws Exception
     {
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         {
             BodyPartID[] bpid = new BodyPartID[Math.abs(rand.nextInt()) % 20];
             for (int t = 0; t < bpid.length; t++)

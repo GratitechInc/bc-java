@@ -29,7 +29,7 @@ public abstract class FlexiTest
             Security.addProvider(new BouncyCastlePQCProvider());
         }
         // initialize sources of randomness
-        rand = new Random();
+        rand = new SecureRandom();
         sr = new SecureRandom();
         // TODO need it?
         sr.setSeed(sr.generateSeed(20));

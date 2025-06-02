@@ -1,6 +1,7 @@
 package org.bouncycastle.math.ec;
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.util.Arrays;
@@ -279,7 +280,7 @@ public abstract class ECFieldElement
             BigInteger k = legendreExponent.add(ECConstants.ONE), qMinusOne = q.subtract(ECConstants.ONE);
 
             BigInteger U, V;
-            Random rand = new Random();
+            Random rand = new SecureRandom();
             do
             {
                 BigInteger P;

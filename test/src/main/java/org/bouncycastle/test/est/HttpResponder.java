@@ -76,7 +76,7 @@ public class HttpResponder
 
     public void run()
     {
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         Socket sock = null;
         try
         {

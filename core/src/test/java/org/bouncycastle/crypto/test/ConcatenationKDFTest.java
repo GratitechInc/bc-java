@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.crypto.Digest;
@@ -65,7 +66,7 @@ public class ConcatenationKDFTest
         byte[] expectedBytes = Hex.decodeStrict(expected);
         byte[] output = new byte[15 + expectedBytes.length];
 
-        Random random = new Random();
+        Random random = new SecureRandom();
         ConcatenationKDFGenerator kdf = new ConcatenationKDFGenerator(digest);
 
         for (int count = 1; count <= expectedBytes.length; ++count)

@@ -707,7 +707,7 @@ public class ECPointTest extends TestCase
         ECFieldElement gamma, z, zeroElement = c.fromBigInteger(ECConstants.ZERO);
 
         int m = c.getFieldSize();
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         do
         {
             ECFieldElement t = c.fromBigInteger(new BigInteger(m, rand));

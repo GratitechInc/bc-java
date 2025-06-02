@@ -2,6 +2,7 @@ package org.bouncycastle.pqc.legacy.math.linearalgebra;
 
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.bouncycastle.util.Arrays;
@@ -28,7 +29,7 @@ public class GF2Polynomial
     private int[] value;
 
     // Random source
-    private static Random rand = new Random();
+    private static Random rand = new SecureRandom();
 
     // Lookup-Table for vectorMult: parity[a]= #1(a) mod 2 == 1
     private static final boolean[] parity = {false, true, true, false, true,
