@@ -1,5 +1,6 @@
 package org.bouncycastle.jce.provider.test;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -246,6 +247,7 @@ public class ElGamalTest
         oOut.close();
 
         ObjectInputStream oIn = new ObjectInputStream(new ByteArrayInputStream(bOut.toByteArray()));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         return oIn.readObject();
     }
@@ -419,6 +421,7 @@ public class ElGamalTest
 
         ByteArrayInputStream   bIn = new ByteArrayInputStream(bOut.toByteArray());
         ObjectInputStream      oIn = new ObjectInputStream(bIn);
+        ObjectInputFilters.enableObjectFilterIfUnprotected(oIn);
 
         pubKey = (DHPublicKey)oIn.readObject();
         spec = pubKey.getParams();
