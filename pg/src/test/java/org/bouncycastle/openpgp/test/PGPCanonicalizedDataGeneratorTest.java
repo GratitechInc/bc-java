@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.Date;
 
 import org.bouncycastle.openpgp.PGPCanonicalizedDataGenerator;
@@ -85,7 +86,7 @@ public class PGPCanonicalizedDataGeneratorTest
         PGPCanonicalizedDataGenerator canGen = new PGPCanonicalizedDataGenerator();
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
-        File bcFile = File.createTempFile("bcpgp", ".back");
+        File bcFile = Files.createTempFile("bcpgp", ".back").toFile();
         OutputStream out = canGen.open(bOut, PGPLiteralData.TEXT, PGPLiteralData.CONSOLE, new Date(), bcFile);
 
         out.write(Strings.toByteArray(data));

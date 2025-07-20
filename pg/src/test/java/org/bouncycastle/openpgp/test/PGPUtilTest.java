@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import org.bouncycastle.asn1.cryptlib.CryptlibObjectIdentifiers;
 import org.bouncycastle.asn1.edec.EdECObjectIdentifiers;
@@ -33,7 +34,7 @@ public class PGPUtilTest
 
         byte[] contentMessage = Strings.toByteArray("Hello, world!\r\nhello, World!\r\n");
 
-        File dataFile = File.createTempFile("bcpg", ".txt");
+        File dataFile = Files.createTempFile("bcpg", ".txt").toFile();
 
         FileOutputStream fOut = new FileOutputStream(dataFile);
 
