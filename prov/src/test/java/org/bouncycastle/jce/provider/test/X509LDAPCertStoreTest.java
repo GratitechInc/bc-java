@@ -9,6 +9,7 @@ import com.unboundid.ldap.sdk.LDAPException;
 import com.unboundid.ldap.sdk.LDAPResult;
 import com.unboundid.ldap.sdk.ResultCode;
 import com.unboundid.ldif.LDIFException;
+import io.github.pixee.security.BoundedLineReader;
 import junit.framework.TestCase;
 import org.bouncycastle.asn1.x500.X500Name;
 import org.bouncycastle.jce.X509LDAPCertStoreParameters;
@@ -122,7 +123,7 @@ public class X509LDAPCertStoreTest
         BufferedReader bin = new BufferedReader(new InputStreamReader(src));
         String line = null;
         List<String> entry = new ArrayList<String>();
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             if (line.isEmpty())
             {

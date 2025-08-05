@@ -1,5 +1,6 @@
 package org.bouncycastle.test.est;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -148,7 +149,7 @@ public class HttpResponder
             {
                 BufferedReader bin = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 String line = null;
-                while ((line = bin.readLine()) != null && line.length() > 0)
+                while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null && line.length() > 0)
                 {
                     lineBuffer.add(line);
                 }
