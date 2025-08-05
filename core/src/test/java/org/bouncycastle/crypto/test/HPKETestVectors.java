@@ -1,5 +1,6 @@
 package org.bouncycastle.crypto.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -188,7 +189,7 @@ public class HPKETestVectors
         HashMap<String, String> expBuf = new HashMap<String, String>();
         ArrayList<Encryption> encryptions = new ArrayList<Encryption>();
         ArrayList<Export> exports = new ArrayList<Export>();
-        while ((line = bin.readLine()) != null)
+        while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
         {
             line = line.trim();
 
@@ -351,7 +352,7 @@ public class HPKETestVectors
             }
             if (line.equals("encryptionsSTART"))
             {
-                while ((line = bin.readLine()) != null)
+                while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
                 {
                     line = line.trim();
                     if (line.equals("encryptionsSTOP"))
@@ -380,7 +381,7 @@ public class HPKETestVectors
 
             if (line.equals("exportsSTART"))
             {
-                while ((line = bin.readLine()) != null)
+                while ((line = BoundedLineReader.readLine(bin, 5_000_000)) != null)
                 {
                     line = line.trim();
                     if (line.equals("exportsSTOP"))
